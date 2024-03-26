@@ -6,8 +6,11 @@
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "sass src/scss:dist/css",
+    "start": "sass --watch src/scss:dist/css & live-server",
     "format": "prettier -w src/**/*.js",
     "lint": "eslint src/**/*.js",
+    "lint-fix": "eslint src/**/*.js --cache --fix",
     "prepare": "husky install"
   },
   "repository": {
@@ -28,7 +31,9 @@
     "eslint": "^8.56.0",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
-    "prettier": "^3.2.5"
+    "live-server": "^1.2.2",
+    "prettier": "^3.2.5",
+    "sass": "^1.67.0"
   },
   "lint-staged": {
     "*.js": [
