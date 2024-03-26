@@ -6,7 +6,8 @@
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "format": "prettier -w src/**/*.js"
+    "format": "prettier -w src/**/*.js",
+    "lint": "eslint src/**/*.js"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,7 @@
   },
   "homepage": "https://github.com/VildeAvloes/semester-project-2#readme",
   "devDependencies": {
+    "eslint": "^8.56.0",
     "prettier": "^3.2.5"
   }
 }
