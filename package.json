@@ -1,0 +1,23 @@
+{
+  "name": "semester-project-2",
+  "version": "1.0.0",
+  "description": "An ficitve auction website created for the Semester Project 2 at the Noroff Front-End developer educational programme. ",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VildeAvloes/semester-project-2.git"
+  },
+  "keywords": [
+    "semester-project-2",
+    "web-app"
+  ],
+  "author": "Vilde Avloes <vildeavlos@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VildeAvloes/semester-project-2/issues"
+  },
+  "homepage": "https://github.com/VildeAvloes/semester-project-2#readme"
+}
