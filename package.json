@@ -1,0 +1,33 @@
+{
+  "name": "semester-project-2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "live-server",
+    "format": "prettier --write .",
+    "lint": "eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VildeAvloes/semester-project-2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/VildeAvloes/semester-project-2/issues"
+  },
+  "homepage": "https://github.com/VildeAvloes/semester-project-2#readme",
+  "devDependencies": {
+    "@eslint/js": "^9.24.0",
+    "eslint": "^9.24.0",
+    "eslint-config-prettier": "^10.1.1",
+    "eslint-define-config": "^2.1.0",
+    "eslint-plugin-prettier": "^5.2.6",
+    "globals": "^16.0.0",
+    "live-server": "^1.2.2",
+    "prettier": "^3.5.3"
+  }
+}
