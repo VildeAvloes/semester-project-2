@@ -1,6 +1,3 @@
-const app = document.getElementById('app');
+import { homePage } from './routes/home.js';
 
-if (app) {
-  app.innerHTML = `<p>Vil bare teste at jeg får dette til å fungere 👋</p>`;
-  console.log('Dette funker! YAY! ');
-}
+homePage();

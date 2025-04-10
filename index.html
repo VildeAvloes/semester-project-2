@@ -13,9 +13,18 @@
   <body>
     <header class="p-3 bg-dark text-white">
       <h1 class="text-center">Welcome to My Semester Project 2</h1>
+      <nav>
+        <a class="nav-link" href="/">Hjem</a>
+        <a class="nav-link" href="/register">Registrer</a>
+      </nav>
     </header>
-    <main id="app" class="container mt-5">
-      <!-- JS will render content here -->
-    </main>
+    <form name="auth">
+      <!-- Registreringsskjema -->
+      <input type="name" name="name" placeholder="Fullt navn" />
+      <input type="email" name="email" placeholder="E-post" />
+      <input type="password" name="password" placeholder="Passord" />
+      <button type="submit" data-auth="register">Registrer</button>
+      <button type="submit" data-auth="login">Logg inn</button>
+    </form>
   </body>
 </html>
