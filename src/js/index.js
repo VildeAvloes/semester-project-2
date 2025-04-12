@@ -1,3 +1,9 @@
-import { homePage } from './routes/home.js';
+// import { homePage } from './routes/home.js';
 
-homePage();
+// homePage();
+
+import { initRouter } from './router.js';
+
+document.addEventListener('DOMContentLoaded', () => {
+  initRouter();
+});
