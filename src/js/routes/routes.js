@@ -3,11 +3,12 @@ import * as views from './../views/index.js';
 
 // Definerer rutene og tilhørende visninger
 const routes = {
-  '': views.homeView,
+  '': views.homePage,
   '#home': views.homePage,
   '#listings': views.listingsPage,
   '#profile': views.profilePage,
   '#register': views.registerPage,
+  '#login': views.loginPage,
 };
 
 // Funksjon for å håndtere ruteendringer
