@@ -1,2 +1,18 @@
-$primary: #ff69b4; // Endrer primary color til rosa 💖
-$font-family-base: 'Segoe UI', sans-serif;
+$primary: #2d4c72;
+$secondary: #3a6ea5;
+$light: #f1f1f1;
+$dark: #2c3e50;
+$success: #5ca07f;
+$danger: #e04d59;
+
+$font-family-base: 'Arial', sans-serif;
+$font-family-sans-serif: 'Arial', sans-serif;
+$headings-font-family: 'Georgia', serif;
+
+$navbar-light-bg: $light;
+$navbar-light-color: $dark;
+$navbar-light-brand-color: $dark;
+$navbar-light-brand-hover-color: $dark;
+$navbar-light-active-color: $secondary;
+$navbar-light-hover-color: $secondary;
+$navbar-light-icon-color: $dark;

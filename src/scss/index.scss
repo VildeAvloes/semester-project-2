@@ -1,2 +1,27 @@
-@use 'variables';
+@import './_variables.scss';
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';
+
+.navbar-brand {
+  font-family: 'Georgia', serif;
+  font-size: 3em;
+}
+
+.nav-link {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.navbar-toggler {
+  border: none;
+  color: $dark;
+  .navbar-toggler-icon {
+    color: $dark;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+  &:focus {
+    box-shadow: none;
+  }
+}
