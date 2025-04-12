@@ -7,7 +7,7 @@ export function loginPage() {
   container.innerHTML = `
     <div class="row justify-content-center">
       <div class="col-md-6">
-        <h1 class="mb-4 text-center">Log in</h1>
+        <h1 class="mb-4 text-center text-dark">Log in</h1>
         <form name="auth" class="card p-4 shadow-sm rounded">
         
           <div class="mb-3">

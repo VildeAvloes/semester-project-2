@@ -7,7 +7,7 @@ export function registerPage() {
   container.innerHTML = `
     <div class="row justify-content-center">
       <div class="col-md-6">
-        <h1 class="mb-4 text-center">Register</h1>
+        <h1 class="mb-4 text-center text-dark">Register</h1>
         <form name="auth" class="card p-4 shadow-sm rounded">
           <div class="mb-3">
             <label for="name" class="form-label">Name</label>
