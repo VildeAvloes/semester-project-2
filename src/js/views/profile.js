@@ -22,9 +22,9 @@ export function profilePage() {
 
   // Legg til de ulike komponentene i col (kolonnen)
   col.append(
-    renderLogoutButton(logout),
     renderProfileDetails(userProfile),
     renderUpdateAvatar(userProfile),
+    renderLogoutButton(logout),
     renderMyListings()
   );
 
