@@ -1,23 +1,12 @@
-import { createAuthFormWrapper } from '../components/forms/authFormWrapper.js';
-import { createInputGroup } from '../components/forms/inputGroup.js';
+import { createFormLayout } from '../components/forms/layout.js';
+import { createInputGroup } from '../components/forms/inputs.js';
+import { createButtonGroup } from '../components/forms/buttons.js';
+import { formWrapper } from '../components/forms/wrapper.js';
 import { onAuth } from '../ui/events/onAuth.js';
+import { validateRegisterForm } from '../ui/forms/validateForm.js';
 
 export function registerPage() {
-  const container = document.createElement('div');
-  container.classList.add('container', 'py-5');
-
-  const row = document.createElement('div');
-  row.classList.add('row', 'justify-content-center');
-
-  const col = document.createElement('div');
-  col.classList.add('col-md-6');
-
-  const heading = document.createElement('h1');
-  heading.classList.add('mb-4', 'text-center', 'text-dark');
-  heading.textContent = 'Register';
-
-  const hr = document.createElement('hr');
-  hr.classList.add('mb-4');
+  const { container, col } = createFormLayout('Register');
 
   const nameGroup = createInputGroup({
     id: 'name',
@@ -40,42 +29,25 @@ export function registerPage() {
     placeholder: 'Password',
   });
 
-  const buttonGroup = document.createElement('div');
-  buttonGroup.classList.add('d-flex', 'flex-column', 'align-items-center');
+  const buttonGroup = createButtonGroup('register');
 
-  const registerButton = document.createElement('button');
-  registerButton.setAttribute('type', 'submit');
-  registerButton.setAttribute('data-auth', 'register');
-  registerButton.classList.add('btn', 'btn-primary');
-  registerButton.textContent = 'Register';
+  const form = formWrapper([nameGroup, emailGroup, passwordGroup, buttonGroup]);
 
-  const registerText = document.createElement('p');
-  registerText.classList.add('mt-3');
-  registerText.textContent = 'Do you already have an account?';
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
 
-  const loginButton = document.createElement('button');
-  loginButton.setAttribute('type', 'button');
-  loginButton.setAttribute('data-auth', 'login');
-  loginButton.classList.add('btn', 'btn-outline-secondary');
-  loginButton.textContent = 'Log in';
+    const isValid = validateRegisterForm([
+      { group: nameGroup, field: 'name' },
+      { group: emailGroup, field: 'email' },
+      { group: passwordGroup, field: 'password' },
+    ]);
 
-  buttonGroup.append(registerButton, registerText, loginButton);
-
-  const form = createAuthFormWrapper([
-    nameGroup,
-    emailGroup,
-    passwordGroup,
-    buttonGroup,
-  ]);
-  form.addEventListener('submit', onAuth);
-
-  loginButton.addEventListener('click', () => {
-    location.hash = '#login';
+    if (isValid) {
+      onAuth(event);
+    }
   });
 
-  col.append(heading, hr, form);
-  row.append(col);
-  container.append(row);
+  col.append(form);
 
   return container;
 }

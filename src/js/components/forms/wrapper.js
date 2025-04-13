@@ -1,4 +1,4 @@
-export function createAuthFormWrapper(children = []) {
+export function formWrapper(children = []) {
   const form = document.createElement('form');
   form.setAttribute('name', 'auth');
   form.classList.add('p-4');

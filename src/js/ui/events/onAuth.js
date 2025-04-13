@@ -1,6 +1,5 @@
 import { register } from '../../api/auth/register.js';
 import { login } from '../../api/auth/login.js';
-import { getListings } from '../../api/listings/get.js';
 
 export async function onAuth(event) {
   event.preventDefault();
@@ -24,6 +23,4 @@ export async function onAuth(event) {
       throw new Error('Registration failed', error);
     }
   }
-
-  await getListings();
 }
