@@ -1,4 +1,4 @@
-export function createButtonGroup(view = 'register') {
+export function renderButtonGroup(view = 'register') {
   const buttonGroup = document.createElement('div');
   buttonGroup.classList.add('d-flex', 'flex-column', 'align-items-center');
 

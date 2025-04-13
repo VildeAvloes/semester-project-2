@@ -1,37 +1,37 @@
-import { createFormLayout } from '../components/forms/layout.js';
-import { createInputGroup } from '../components/forms/inputs.js';
-import { createButtonGroup } from '../components/forms/buttons.js';
-import { formWrapper } from '../components/forms/wrapper.js';
+import { renderFormWrapper } from '../components/forms/wrapper.js';
+import { renderInputGroup } from '../components/forms/inputs.js';
+import { renderButtonGroup } from '../components/forms/buttons.js';
+import { renderForm } from '../components/forms/form.js';
 import { onAuth } from '../ui/events/onAuth.js';
 import { validateRegisterForm } from '../ui/forms/validateForm.js';
 
 export function registerPage() {
-  const { container, col } = createFormLayout('Register');
+  const { container, col } = renderFormWrapper('Register');
 
-  const nameGroup = createInputGroup({
+  const nameGroup = renderInputGroup({
     id: 'name',
     label: 'Name',
     type: 'text',
     placeholder: 'Name',
   });
 
-  const emailGroup = createInputGroup({
+  const emailGroup = renderInputGroup({
     id: 'email',
     label: 'E-mail',
     type: 'email',
     placeholder: 'E-mail',
   });
 
-  const passwordGroup = createInputGroup({
+  const passwordGroup = renderInputGroup({
     id: 'password',
     label: 'Password',
     type: 'password',
     placeholder: 'Password',
   });
 
-  const buttonGroup = createButtonGroup('register');
+  const buttonGroup = renderButtonGroup('register');
 
-  const form = formWrapper([nameGroup, emailGroup, passwordGroup, buttonGroup]);
+  const form = renderForm([nameGroup, emailGroup, passwordGroup, buttonGroup]);
 
   form.addEventListener('submit', (event) => {
     event.preventDefault();

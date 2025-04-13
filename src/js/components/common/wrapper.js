@@ -1,6 +1,6 @@
-import { renderHeader } from '../common/header.js';
+import { renderHeader } from './header.js';
 
-export function renderFormWrapper(headingText) {
+export function renderWrapper(headingText) {
   const container = document.createElement('div');
   container.classList.add('container', 'py-5');
 
@@ -8,17 +8,10 @@ export function renderFormWrapper(headingText) {
   row.classList.add('row', 'justify-content-center');
 
   const col = document.createElement('div');
-  col.classList.add('col-md-6');
+  col.classList.add('col-md-8');
 
   const header = renderHeader(headingText);
+  col.appendChild(header);
 
-  col.append(header);
-  row.append(col);
-  container.append(row);
-
-  return {
-    container,
-    row,
-    col,
-  };
+  return { container, row, col };
 }

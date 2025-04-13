@@ -1,4 +1,4 @@
-export function createInputGroup({
+export function renderInputGroup({
   id,
   label,
   type,
