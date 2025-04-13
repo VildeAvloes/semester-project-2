@@ -1,5 +1,6 @@
-export function renderView(view) {
+export async function renderView(view) {
   const app = document.getElementById('app');
   app.innerHTML = '';
-  app.appendChild(view);
+  const viewElement = await view;
+  app.appendChild(viewElement);
 }
