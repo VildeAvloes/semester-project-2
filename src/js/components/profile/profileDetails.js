@@ -1,9 +1,12 @@
-export function renderProfileDetails(userProfile) {
+export function renderProfileDetails(profile) {
+  const avatarUrl =
+    localStorage.getItem('userAvatarUrl') ||
+    profile.avatarUrl ||
+    `https://ui-avatars.com/api/?name=${encodeURIComponent(profile.name)}&background=b9c5d3&color=2c3e50`;
+
   const avatar = document.createElement('img');
   avatar.id = 'profile-avatar';
-  avatar.src =
-    userProfile.avatarUrl ||
-    `https://ui-avatars.com/api/?name=${encodeURIComponent(userProfile.name)}&background=b9c5d3&color=2c3e50`;
+  avatar.src = avatarUrl;
   avatar.alt = 'Avatar';
   avatar.classList.add('rounded-circle', 'me-4');
   avatar.width = 100;
@@ -12,12 +15,12 @@ export function renderProfileDetails(userProfile) {
   const username = document.createElement('p');
   username.id = 'profile-name';
   username.classList.add('fs-2', 'fw-bold', 'mb-1');
-  username.textContent = userProfile.name;
+  username.textContent = profile.name;
 
   const email = document.createElement('p');
   email.id = 'profile-email';
   email.classList.add('mb-1', 'text-secondary');
-  email.textContent = userProfile.email;
+  email.textContent = profile.email;
 
   const creditsLabel = document.createElement('p');
   creditsLabel.classList.add('fs-5', 'fw-bold', 'me-2');
@@ -26,7 +29,7 @@ export function renderProfileDetails(userProfile) {
   const creditsValue = document.createElement('p');
   creditsValue.id = 'profile-credits';
   creditsValue.classList.add('fs-5', 'fw-bold', 'text-secondary');
-  creditsValue.textContent = userProfile.credits || '0';
+  creditsValue.textContent = profile.credits || '0';
 
   const creditsContainer = document.createElement('div');
   creditsContainer.classList.add('d-flex');
