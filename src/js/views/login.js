@@ -4,6 +4,7 @@ import { renderButtonGroup } from '../components/forms/buttons.js';
 import { renderForm } from '../components/forms/form.js';
 import { onAuth } from '../ui/events/onAuth.js';
 import { validateLoginForm } from '../ui/forms/validateForm.js';
+import { renderMessage } from '../components/common/message.js';
 
 export function loginPage() {
   const { container, col } = renderWrapper('Log In');
@@ -29,13 +30,24 @@ export function loginPage() {
   form.addEventListener('submit', (event) => {
     event.preventDefault();
 
+    const previousMessage = form.querySelector('.message-container');
+    if (previousMessage) previousMessage.remove();
+
     const isValid = validateLoginForm([
-      { group: emailGroup },
-      { group: passwordGroup },
+      { group: emailGroup, field: 'email' },
+      { group: passwordGroup, field: 'password' },
     ]);
 
     if (isValid) {
-      onAuth(event);
+      onAuth(event).catch((error) => {
+        const messageContainer = renderMessage(
+          'error',
+          'Invalid email or password'
+        );
+        messageContainer.classList.add('d-flex', 'justify-content-center');
+        form.prepend(messageContainer);
+        throw new Error('Invalid email or password', error);
+      });
     }
   });
 

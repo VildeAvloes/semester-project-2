@@ -1,33 +1,43 @@
+import { renderMessage } from '../../components/common/message.js';
 import { validateInput } from './inputValidation.js';
 
 export function validateRegisterForm(fields = []) {
-  let valid = true;
+  let isValid = true;
 
   fields.forEach(({ group, field }) => {
-    const value = group.querySelector('input')?.value || '';
-    valid &= validateInput(group, value, field);
-  });
-
-  return Boolean(valid);
-}
-
-export function validateLoginForm(fields = []) {
-  let valid = true;
-
-  fields.forEach(({ group }) => {
     const input = group.querySelector('input');
-    const errorDiv = group.querySelector('.invalid-feedback');
+    const value = input?.value?.trim() || '';
 
-    if (!input.value.trim()) {
-      input.classList.add('is-invalid');
-      errorDiv.textContent = 'This field is required.';
-      errorDiv.style.visibility = 'visible';
-      valid = false;
-    } else {
-      input.classList.remove('is-invalid');
-      errorDiv.style.visibility = 'hidden';
+    const fieldIsValid = validateInput(group, value, field);
+    if (!fieldIsValid) {
+      isValid = false;
     }
   });
 
-  return valid;
+  return isValid;
+}
+
+export function validateLoginForm(fields = []) {
+  let isValid = true;
+
+  fields.forEach(({ group, field }) => {
+    const input = group.querySelector('input');
+    const value = input?.value?.trim() || '';
+    const messageContainer = group.querySelector(`#${field}-message`);
+
+    messageContainer.innerHTML = '';
+
+    if (!value) {
+      input.classList.add('is-invalid');
+      messageContainer.append(
+        renderMessage('error', 'This field is required.')
+      );
+      isValid = false;
+    } else {
+      messageContainer.innerHTML = '';
+      input.classList.remove('is-invalid');
+    }
+  });
+
+  return isValid;
 }

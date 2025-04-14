@@ -1,3 +1,4 @@
+import { renderMessage } from '../../components/common/message.js';
 import { validateName, validateEmail, validatePassword } from './rules.js';
 
 export function validateInput(inputGroup, value, field) {
@@ -17,15 +18,17 @@ export function validateInput(inputGroup, value, field) {
       errorMessage = null;
   }
 
-  const errorDiv = inputGroup.querySelector('.invalid-feedback');
-  if (errorMessage) {
-    inputGroup.querySelector('input').classList.add('is-invalid');
-    errorDiv.textContent = errorMessage;
-    errorDiv.style.visibility = 'visible';
-  } else {
-    inputGroup.querySelector('input').classList.remove('is-invalid');
-    errorDiv.style.visibility = 'hidden';
-  }
+  const input = inputGroup.querySelector('input');
+  const messageContainer = inputGroup.querySelector(`#${field}-message`);
 
-  return !errorMessage;
+  messageContainer.innerHTML = '';
+
+  if (errorMessage) {
+    input.classList.add('is-invalid');
+    messageContainer.append(renderMessage('error', errorMessage));
+    return false;
+  }
+  messageContainer.innerHTML = '';
+  input.classList.remove('is-invalid');
+  return true;
 }
