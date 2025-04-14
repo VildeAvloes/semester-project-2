@@ -1,4 +1,4 @@
-import { renderFormWrapper } from '../components/forms/wrapper.js';
+import { renderWrapper } from '../components/forms/wrapper.js';
 import { renderInputGroup } from '../components/forms/inputs.js';
 import { renderButtonGroup } from '../components/forms/buttons.js';
 import { renderForm } from '../components/forms/form.js';
@@ -6,7 +6,8 @@ import { onAuth } from '../ui/events/onAuth.js';
 import { validateRegisterForm } from '../ui/forms/validateForm.js';
 
 export function registerPage() {
-  const { container, col } = renderFormWrapper('Register');
+  const { container, col } = renderWrapper('Register');
+  const form = renderForm();
 
   const nameGroup = renderInputGroup({
     id: 'name',
@@ -31,7 +32,7 @@ export function registerPage() {
 
   const buttonGroup = renderButtonGroup('register');
 
-  const form = renderForm([nameGroup, emailGroup, passwordGroup, buttonGroup]);
+  form.append(nameGroup, emailGroup, passwordGroup, buttonGroup);
 
   form.addEventListener('submit', (event) => {
     event.preventDefault();

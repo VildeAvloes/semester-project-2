@@ -11,7 +11,7 @@ export function renderWrapper(headingText) {
   col.classList.add('col-md-8');
 
   const header = renderHeader(headingText);
-  col.appendChild(header);
+  col.append(header);
 
   return { container, row, col };
 }

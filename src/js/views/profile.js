@@ -1,5 +1,5 @@
 import { logout } from '../api/auth/logout.js';
-import { isLoggedIn, profile } from '../api/auth/state.js';
+import { isLoggedIn, loadProfile } from '../api/auth/state.js';
 import { renderWrapper } from '../components/common/wrapper.js';
 import { renderLogoutButton } from '../components/profile/logout.js';
 import { renderMyListings } from '../components/profile/myListings.js';
@@ -12,7 +12,7 @@ export function profilePage() {
     return;
   }
 
-  const userProfile = profile();
+  const userProfile = loadProfile();
   if (!userProfile) {
     location.hash = '#login';
     return;

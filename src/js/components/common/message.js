@@ -8,7 +8,6 @@ export function renderMessage(type, message) {
     messageContainer.classList.add('text-danger');
   }
 
-  x;
   messageContainer.textContent = message;
 
   return messageContainer;

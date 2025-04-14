@@ -1,13 +1,13 @@
-import { renderFormWrapper } from '../components/forms/wrapper.js';
+import { renderWrapper } from '../components/forms/wrapper.js';
 import { renderInputGroup } from '../components/forms/inputs.js';
 import { renderButtonGroup } from '../components/forms/buttons.js';
 import { renderForm } from '../components/forms/form.js';
 import { onAuth } from '../ui/events/onAuth.js';
-
 import { validateLoginForm } from '../ui/forms/validateForm.js';
 
 export function loginPage() {
-  const { container, col } = renderFormWrapper('Log In');
+  const { container, col } = renderWrapper('Log In');
+  const form = renderForm();
 
   const emailGroup = renderInputGroup({
     id: 'email',
@@ -24,7 +24,7 @@ export function loginPage() {
 
   const buttonGroup = renderButtonGroup('login');
 
-  const form = renderForm([emailGroup, passwordGroup, buttonGroup]);
+  form.append(emailGroup, passwordGroup, buttonGroup);
 
   form.addEventListener('submit', (event) => {
     event.preventDefault();

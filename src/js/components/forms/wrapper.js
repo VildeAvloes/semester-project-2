@@ -1,6 +1,6 @@
 import { renderHeader } from '../common/header.js';
 
-export function renderFormWrapper(headingText) {
+export function renderWrapper(headingText) {
   const container = document.createElement('div');
   container.classList.add('container', 'py-5');
 

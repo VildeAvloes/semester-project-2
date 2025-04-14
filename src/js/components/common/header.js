@@ -9,7 +9,7 @@ export function renderHeader(headingText) {
   const hr = document.createElement('hr');
   hr.classList.add('mb-4');
 
-  header.appendChild(heading);
-  header.appendChild(hr);
+  header.append(heading, hr);
+
   return header;
 }

@@ -1,5 +1,6 @@
 import { register } from '../../api/auth/register.js';
 import { login } from '../../api/auth/login.js';
+import { saveProfile } from '../../api/auth/state.js';
 
 export async function onAuth(event) {
   event.preventDefault();
@@ -17,7 +18,13 @@ export async function onAuth(event) {
   } else if (event.submitter.dataset.auth === 'register') {
     try {
       await register(name, email, password);
-      await login(email, password);
+      const profile = await login(email, password);
+
+      if (!profile.credits) {
+        profile.credits = 1000;
+      }
+
+      saveProfile(profile);
       location.hash = '#profile';
     } catch (error) {
       throw new Error('Registration failed', error);

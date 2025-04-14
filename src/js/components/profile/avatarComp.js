@@ -1,5 +1,5 @@
 import { updateAvatar } from '../../api/auth/profile/avatar.js';
-import { profile } from '../../api/auth/state.js';
+import { loadProfile } from '../../api/auth/state.js';
 
 import { renderMessage } from '../common/message.js';
 
@@ -36,7 +36,7 @@ export function renderUpdateAvatarComp() {
 
   updateButton.addEventListener('click', async () => {
     const avatarUrl = avatarInput.value.trim();
-    const user = profile();
+    const user = loadProfile();
     const token = localStorage.getItem('token');
 
     if (!avatarUrl) {
@@ -70,7 +70,7 @@ export function renderUpdateAvatarComp() {
       messageContainer.innerHTML = '';
       messageContainer.appendChild(errorMessage);
 
-      console.log(error);
+      throw new Error('Failed to update avatar', error);
     }
   });
 
