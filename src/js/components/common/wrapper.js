@@ -1,17 +1,32 @@
 import { renderHeader } from './header.js';
 
-export function renderWrapper(headingText) {
+export function renderWrapper(headingText, contentColClass = 'col-md-8') {
   const container = document.createElement('div');
   container.classList.add('container', 'py-5');
 
-  const row = document.createElement('div');
-  row.classList.add('row', 'justify-content-center');
+  const headerRow = document.createElement('div');
+  headerRow.classList.add('row', 'justify-content-center');
 
-  const col = document.createElement('div');
-  col.classList.add('col-md-8');
+  const headerCol = document.createElement('div');
+  headerCol.classList.add('col-md-10');
 
   const header = renderHeader(headingText);
-  col.append(header);
+  headerCol.append(header);
+  headerRow.append(headerCol);
 
-  return { container, row, col };
+  const contentRow = document.createElement('div');
+  contentRow.classList.add('row', 'justify-content-center');
+
+  const contentCol = document.createElement('div');
+  contentCol.classList.add(contentColClass);
+
+  contentRow.append(contentCol);
+
+  container.append(headerRow, contentRow);
+
+  return {
+    container,
+    row: contentRow,
+    col: contentCol,
+  };
 }

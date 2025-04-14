@@ -1,13 +1,13 @@
-import { renderWrapper } from '../components/forms/wrapper.js';
 import { renderInputGroup } from '../components/forms/inputs.js';
 import { renderButtonGroup } from '../components/forms/buttons.js';
 import { renderForm } from '../components/forms/form.js';
 import { onAuth } from '../ui/events/onAuth.js';
 import { validateLoginForm } from '../ui/forms/validateForm.js';
 import { renderMessage } from '../components/common/message.js';
+import { renderWrapper } from '../components/common/wrapper.js';
 
 export function loginPage() {
-  const { container, col } = renderWrapper('Log In');
+  const { container, col } = renderWrapper('Log In', 'col-md-6');
   const form = renderForm();
 
   const emailGroup = renderInputGroup({
@@ -40,12 +40,12 @@ export function loginPage() {
 
     if (isValid) {
       onAuth(event).catch((error) => {
-        const messageContainer = renderMessage(
+        const errorMessage = renderMessage(
           'error',
           'Invalid email or password'
         );
-        messageContainer.classList.add('d-flex', 'justify-content-center');
-        form.prepend(messageContainer);
+        errorMessage.classList.add('d-flex', 'justify-content-center');
+        form.prepend(errorMessage);
         throw new Error('Invalid email or password', error);
       });
     }

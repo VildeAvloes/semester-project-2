@@ -1,4 +1,4 @@
-import { renderWrapper } from '../components/forms/wrapper.js';
+import { renderWrapper } from '../components/common/wrapper.js';
 import { renderInputGroup } from '../components/forms/inputs.js';
 import { renderButtonGroup } from '../components/forms/buttons.js';
 import { renderForm } from '../components/forms/form.js';
@@ -6,7 +6,7 @@ import { onAuth } from '../ui/events/onAuth.js';
 import { validateRegisterForm } from '../ui/forms/validateForm.js';
 
 export function registerPage() {
-  const { container, col } = renderWrapper('Register');
+  const { container, col } = renderWrapper('Register', 'col-md-6');
   const form = renderForm();
 
   const nameGroup = renderInputGroup({

@@ -18,7 +18,7 @@ export function profilePage() {
     return;
   }
 
-  const { container, row, col } = renderWrapper('My Profile');
+  const { container, row, col } = renderWrapper('My Profile', 'col-md-10');
 
   col.append(
     renderProfileDetails(userProfile),
