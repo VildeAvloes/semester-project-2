@@ -13,7 +13,7 @@ export function renderSearchBar(onSearch) {
 
   const button = document.createElement('button');
   button.type = 'submit';
-  button.classList.add('btn', 'btn-outline-primary');
+  button.classList.add('btn', 'btn-primary');
   button.innerHTML = 'Search';
 
   inputGroup.append(input, button);

@@ -1,7 +1,6 @@
-import { logout } from '../api/auth/logout.js';
 import { isLoggedIn, loadProfile } from '../api/auth/state.js';
 import { renderWrapper } from '../components/common/wrapper.js';
-import { renderLogoutButton } from '../components/profile/logout.js';
+
 import { renderMyListings } from '../components/profile/myListings.js';
 import { renderProfileDetails } from '../components/profile/profileDetails.js';
 import { renderUpdateAvatarComp } from '../components/profile/avatarComp.js';
@@ -23,7 +22,7 @@ export function profilePage() {
   col.append(
     renderProfileDetails(userProfile),
     renderUpdateAvatarComp(userProfile),
-    renderLogoutButton(logout),
+
     renderMyListings()
   );
 

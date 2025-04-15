@@ -9,7 +9,7 @@ export async function listingItemPage(id) {
 
   const backButton = document.createElement('button');
   backButton.innerHTML = `<i class="bi bi-arrow-left"></i> Back to Listings`;
-  backButton.classList.add('btn', 'btn-link', 'mb-3', 'p-0');
+  backButton.classList.add('btn', 'btn-outline-primary', 'mb-2');
   backButton.addEventListener('click', () => {
     window.history.back();
   });
