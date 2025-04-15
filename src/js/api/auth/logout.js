@@ -6,4 +6,5 @@ export function logout() {
   remove('profile');
 
   updateNavbar();
+  location.hash = '#home';
 }
