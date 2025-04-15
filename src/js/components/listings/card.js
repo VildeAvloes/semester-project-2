@@ -1,4 +1,4 @@
-import { renderImage } from './cardImage.js';
+import { renderCardImage } from './cardImage.js';
 
 export function renderCard(listing) {
   const { title, description, media, id } = listing;
@@ -12,7 +12,7 @@ export function renderCard(listing) {
   const card = document.createElement('div');
   card.classList.add('col');
 
-  const imageContent = renderImage(media);
+  const imageContent = renderCardImage(media);
 
   const cardContent = document.createElement('div');
   cardContent.classList.add('card', 'shadow-sm', 'position-relative');

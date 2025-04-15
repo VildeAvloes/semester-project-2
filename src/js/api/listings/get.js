@@ -11,7 +11,9 @@ export async function getListings() {
 }
 
 export async function getListing(id) {
-  const response = await authFetch(`${API_BASE}${API_LISTINGS}/${id}`);
+  const response = await authFetch(
+    `${API_BASE}${API_LISTINGS}/${id}?_bids=true`
+  );
 
   if (response.ok) {
     return await response.json();

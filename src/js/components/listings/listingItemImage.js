@@ -1,4 +1,4 @@
-export function renderCardImage(media) {
+export function renderListingItemImage(media) {
   const hasValidImage = media?.[0]?.url && media[0].url.startsWith('http');
   const imageUrl = hasValidImage ? media[0].url : null;
   const imageAlt = hasValidImage
@@ -12,13 +12,7 @@ export function renderCardImage(media) {
     const image = document.createElement('img');
     image.src = imageUrl;
     image.alt = imageAlt;
-    image.classList.add(
-      'img-fluid',
-      'object-fit-cover',
-      'w-100',
-      'h-100',
-      'rounded-top'
-    );
+    image.classList.add('img-fluid', 'object-fit-cover', 'w-100', 'h-100');
 
     imageContainer.append(image);
   } else {
@@ -30,8 +24,7 @@ export function renderCardImage(media) {
       'bg-info',
       'text-black',
       'w-100',
-      'h-100',
-      'rounded-top'
+      'h-100'
     );
     fallback.textContent = 'Missing image';
     imageContainer.append(fallback);

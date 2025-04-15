@@ -33,3 +33,12 @@
     font-family: $headings-font-family;
   }
 }
+
+.modal-container {
+  max-width: 540px;
+
+  .list-group {
+    max-height: 250px;
+    overflow-y: auto;
+  }
+}
