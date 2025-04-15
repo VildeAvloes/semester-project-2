@@ -57,7 +57,8 @@ export function renderHowItWorks() {
     'btn-primary',
     'd-block',
     'mx-auto',
-    'mt-4'
+    'mt-4',
+    'min-w-150'
   );
   registerButton.textContent = 'Register Now';
   registerButton.setAttribute('type', 'button');

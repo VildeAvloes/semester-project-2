@@ -25,7 +25,7 @@ export function homePage() {
     'Discover unique treasures, place your bids, and win second-hand gems from people just like you.';
 
   const ctaButton = document.createElement('a');
-  ctaButton.classList.add('btn', 'btn-primary', 'mt-3');
+  ctaButton.classList.add('btn', 'btn-primary', 'mt-3', 'min-w-150');
   ctaButton.href = '#listings';
   ctaButton.textContent = 'Browse Listings';
 

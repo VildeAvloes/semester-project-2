@@ -6,7 +6,8 @@ export function renderLoadMoreButton() {
     'btn-outline-primary',
     'mt-4',
     'd-block',
-    'mx-auto'
+    'mx-auto',
+    'min-w-150'
   );
   loadMoreButton.id = 'load-more-btn';
   return loadMoreButton;

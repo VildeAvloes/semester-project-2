@@ -6,7 +6,7 @@ export function renderButtonGroup(view = 'register') {
     const registerButton = document.createElement('button');
     registerButton.setAttribute('type', 'submit');
     registerButton.setAttribute('data-auth', 'register');
-    registerButton.classList.add('btn', 'btn-primary');
+    registerButton.classList.add('btn', 'btn-primary', 'min-w-150');
     registerButton.textContent = 'Register';
 
     const registerText = document.createElement('p');
@@ -16,7 +16,7 @@ export function renderButtonGroup(view = 'register') {
     const loginButton = document.createElement('button');
     loginButton.setAttribute('type', 'button');
     loginButton.setAttribute('data-auth', 'login');
-    loginButton.classList.add('btn', 'btn-outline-secondary');
+    loginButton.classList.add('btn', 'btn-outline-secondary', 'min-w-150');
     loginButton.textContent = 'Log in';
 
     loginButton.addEventListener('click', () => {
@@ -30,7 +30,7 @@ export function renderButtonGroup(view = 'register') {
     const loginButton = document.createElement('button');
     loginButton.setAttribute('type', 'submit');
     loginButton.setAttribute('data-auth', 'login');
-    loginButton.classList.add('btn', 'btn-primary');
+    loginButton.classList.add('btn', 'btn-primary', 'min-w-150');
     loginButton.textContent = 'Log in';
 
     const registerText = document.createElement('p');
@@ -40,7 +40,7 @@ export function renderButtonGroup(view = 'register') {
     const registerButton = document.createElement('button');
     registerButton.setAttribute('type', 'button');
     registerButton.setAttribute('data-auth', 'register');
-    registerButton.classList.add('btn', 'btn-outline-secondary');
+    registerButton.classList.add('btn', 'btn-outline-secondary', 'min-w-150');
     registerButton.textContent = 'Register';
 
     registerButton.addEventListener('click', () => {

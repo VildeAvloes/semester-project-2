@@ -9,7 +9,7 @@ export async function listingItemPage(id) {
 
   const backButton = document.createElement('button');
   backButton.innerHTML = `<i class="bi bi-arrow-left"></i> Back to Listings`;
-  backButton.classList.add('btn', 'btn-outline-primary', 'mb-2');
+  backButton.classList.add('btn', 'btn-outline-secondary', 'mb-2', 'min-w-150');
   backButton.addEventListener('click', () => {
     window.history.back();
   });
@@ -36,7 +36,7 @@ export async function listingItemPage(id) {
 
     const bidButton = document.createElement('button');
     bidButton.setAttribute('type', 'button');
-    bidButton.classList.add('btn', 'btn-primary');
+    bidButton.classList.add('btn', 'btn-primary', 'min-w-150');
     bidButton.textContent = 'Make a bid';
 
     bidButton.addEventListener('click', () => {

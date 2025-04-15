@@ -30,7 +30,7 @@ export function renderUpdateAvatarComp() {
 
   const updateButton = document.createElement('button');
   updateButton.id = 'update-avatar';
-  updateButton.classList.add('btn', 'btn-secondary', 'ms-auto');
+  updateButton.classList.add('btn', 'btn-secondary', 'ms-auto', 'min-w-150');
   updateButton.textContent = 'Update Avatar';
 
   updateButton.addEventListener('click', async () => {

@@ -9,12 +9,12 @@ export function renderFooter(onClose) {
   );
 
   const cancelButton = document.createElement('button');
-  cancelButton.classList.add('btn', 'btn-secondary');
+  cancelButton.classList.add('btn', 'btn-outline-secondary', 'min-w-150');
   cancelButton.textContent = 'Cancel';
   cancelButton.addEventListener('click', onClose);
 
   const submitButton = document.createElement('button');
-  submitButton.classList.add('btn', 'btn-primary');
+  submitButton.classList.add('btn', 'btn-primary', 'min-w-150');
   submitButton.textContent = 'Submit Bid';
 
   footer.append(cancelButton, submitButton);

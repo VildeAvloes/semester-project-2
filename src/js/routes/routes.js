@@ -8,6 +8,7 @@ const routes = {
   '#profile': views.profilePage,
   '#register': views.registerPage,
   '#login': views.loginPage,
+  '#create-listing': views.createListingPage,
 };
 
 function onRouteChange() {

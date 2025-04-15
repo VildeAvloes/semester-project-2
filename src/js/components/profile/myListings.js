@@ -1,6 +1,6 @@
 export function renderMyListings() {
   const myListings = document.createElement('div');
-  myListings.classList.add('container', 'mt-4');
+  myListings.classList.add('mt-4');
 
   const listingsHeader = document.createElement('div');
   listingsHeader.classList.add(
@@ -16,7 +16,7 @@ export function renderMyListings() {
 
   const createListingButton = document.createElement('button');
   createListingButton.id = 'create-listing-btn';
-  createListingButton.classList.add('btn', 'btn-primary');
+  createListingButton.classList.add('btn', 'btn-primary', 'min-w-150');
   createListingButton.textContent = 'Create Listing';
 
   createListingButton.addEventListener('click', () => {
@@ -36,16 +36,16 @@ export function renderMyListings() {
     'g-4'
   );
 
-  const loadMoreButton = document.createElement('div');
-  loadMoreButton.classList.add('text-center', 'mt-4');
+  const loadMoreButtonWrapper = document.createElement('div');
+  loadMoreButtonWrapper.classList.add('text-center', 'mt-4');
 
-  const loadMoreBtn = document.createElement('button');
-  loadMoreBtn.id = 'load-more-btn';
-  loadMoreBtn.classList.add('btn', 'btn-outline-primary');
-  loadMoreBtn.textContent = 'Load more';
+  const loadMoreButton = document.createElement('button');
+  loadMoreButton.id = 'load-more-btn';
+  loadMoreButton.classList.add('btn', 'btn-outline-primary', 'min-w-150');
+  loadMoreButton.textContent = 'Load more';
 
-  loadMoreButton.append(loadMoreBtn);
-  myListings.append(listingCards, loadMoreButton);
+  loadMoreButtonWrapper.append(loadMoreButton);
+  myListings.append(listingCards, loadMoreButtonWrapper);
 
   return myListings;
 }
