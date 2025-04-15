@@ -1,4 +1,4 @@
-import { renderView } from '../ui/renderView.js';
+import { renderView } from '../utils/renderView.js';
 import * as views from './../views/index.js';
 
 const routes = {

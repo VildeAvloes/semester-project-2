@@ -1,21 +1,17 @@
 import { getListings } from '../api/listings/get.js';
 import { renderMessage } from '../components/common/message.js';
 import { renderWrapper } from '../components/common/wrapper.js';
-import { renderCard } from '../components/listings/card.js';
+import { renderDescription } from '../components/listings/description.js';
+import { renderLoadMoreButton } from '../components/listings/loadMore.js';
+import { renderSearchBar } from '../components/listings/searchBar.js';
+import { renderNextItems } from '../utils/listings/nextItems.js';
+
+const ITEMS_PER_PAGE = 9;
 
 export async function listingsPage() {
   const { container, row, col } = renderWrapper('Listings', 'col-md-10');
 
-  const descriptionContainer = document.createElement('div');
-  descriptionContainer.classList.add('text-center', 'mb-5');
-
-  const descriptionText = document.createElement('p');
-  descriptionText.innerHTML =
-    'Welcome to listings! <br /> Explore listings and bid on your most wanted products';
-
-  descriptionContainer.append(descriptionText);
-  col.append(descriptionContainer);
-
+  const descriptionContainer = renderDescription();
   const cardsContainer = document.createElement('div');
   cardsContainer.classList.add(
     'row',
@@ -25,40 +21,61 @@ export async function listingsPage() {
     'g-4'
   );
   cardsContainer.id = 'listing-cards';
-  col.append(cardsContainer);
 
-  const loadMoreButtonContainer = document.createElement('div');
-  loadMoreButtonContainer.classList.add('text-center', 'mt-4');
+  const loadMoreButton = renderLoadMoreButton();
 
-  const loadMoreButton = document.createElement('button');
-  loadMoreButton.id = 'load-more-btn';
-  loadMoreButton.classList.add('btn', 'btn-outline-primary');
-  loadMoreButton.textContent = 'Load more';
+  let allListings = [];
+  let filteredListings = [];
+  let currentIndex = 0;
 
-  loadMoreButtonContainer.append(loadMoreButton);
-  col.append(loadMoreButtonContainer);
-
-  try {
-    const { data: listings } = await getListings();
-
-    listings.forEach((listing) => {
-      const card = renderCard(listing);
-      cardsContainer.append(card);
-    });
-  } catch (error) {
-    descriptionText.innerHTML = '';
-    loadMoreButton.remove('button');
-    const errorMessage = renderMessage(
-      'error',
-      'Failed to load listings. Please try again later.'
-    );
-    errorMessage.classList.add('d-flex', 'justify-content-center');
-    col.append(errorMessage);
-    console.error('Error loading listings:', error);
+  function resetListings() {
+    cardsContainer.innerHTML = '';
+    currentIndex = 0;
   }
 
+  function handleNextItems(listings) {
+    currentIndex = renderNextItems(
+      listings,
+      cardsContainer,
+      currentIndex,
+      ITEMS_PER_PAGE
+    );
+
+    if (currentIndex >= listings.length) {
+      loadMoreButton.classList.add('d-none');
+    } else {
+      loadMoreButton.classList.remove('d-none');
+    }
+  }
+
+  function handleSearch(query) {
+    resetListings();
+    filteredListings = allListings.filter((item) =>
+      item.title.toLowerCase().includes(query)
+    );
+    handleNextItems(filteredListings);
+  }
+
+  const searchBar = renderSearchBar(handleSearch);
+
+  col.append(descriptionContainer, searchBar, cardsContainer, loadMoreButton);
   row.append(col);
   container.append(row);
+
+  try {
+    const { data } = await getListings();
+    allListings = data;
+    filteredListings = data;
+    handleNextItems(filteredListings);
+  } catch (error) {
+    const errorMessage = renderMessage('error', 'Failed to load listings');
+    col.append(errorMessage);
+    console.error(error);
+  }
+
+  loadMoreButton.addEventListener('click', () =>
+    handleNextItems(filteredListings)
+  );
 
   return container;
 }

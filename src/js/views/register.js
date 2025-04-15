@@ -2,10 +2,16 @@ import { renderWrapper } from '../components/common/wrapper.js';
 import { renderInputGroup } from '../components/forms/inputs.js';
 import { renderButtonGroup } from '../components/forms/buttons.js';
 import { renderForm } from '../components/forms/form.js';
-import { onAuth } from '../ui/events/onAuth.js';
-import { validateRegisterForm } from '../ui/forms/validateForm.js';
+import { onAuth } from '../utils/events/onAuth.js';
+import { validateRegisterForm } from '../utils/forms/validateForm.js';
+import { isLoggedIn } from '../api/auth/state.js';
 
 export function registerPage() {
+  if (isLoggedIn()) {
+    location.hash = '#profile';
+    return;
+  }
+
   const { container, col } = renderWrapper('Register', 'col-md-6');
   const form = renderForm();
 

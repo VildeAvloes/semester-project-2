@@ -1,8 +1,8 @@
 import { renderInputGroup } from '../components/forms/inputs.js';
 import { renderButtonGroup } from '../components/forms/buttons.js';
 import { renderForm } from '../components/forms/form.js';
-import { onAuth } from '../ui/events/onAuth.js';
-import { validateLoginForm } from '../ui/forms/validateForm.js';
+import { onAuth } from '../utils/events/onAuth.js';
+import { validateLoginForm } from '../utils/forms/validateForm.js';
 import { renderMessage } from '../components/common/message.js';
 import { renderWrapper } from '../components/common/wrapper.js';
 

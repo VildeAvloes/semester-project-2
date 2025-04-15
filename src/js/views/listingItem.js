@@ -1,20 +1,26 @@
 import { getListing } from '../api/listings/get.js';
 import { renderMessage } from '../components/common/message.js';
 import { renderWrapper } from '../components/common/wrapper.js';
-import { renderListingItemImage } from '../components/listings/listingItemImage.js';
-import { openModal } from '../ui/modal/modal.js';
+import { renderListingItemImage } from '../components/listings/listingItem/listingItemImage.js';
+import { openModal } from '../utils/modal/modal.js';
 
 export async function listingItemPage(id) {
-  const { container, row, col } = renderWrapper('Listing Details', 'col-md-10');
+  const { container, row, col } = renderWrapper('Listing Details', 'col-md-8');
+
+  const backButton = document.createElement('button');
+  backButton.innerHTML = `<i class="bi bi-arrow-left"></i> Back to Listings`;
+  backButton.classList.add('btn', 'btn-link', 'mb-3', 'p-0');
+  backButton.addEventListener('click', () => {
+    window.history.back();
+  });
+  col.append(backButton);
 
   try {
     const listing = await getListing(id);
     console.log(listing);
 
     const imageWrapper = document.createElement('div');
-    imageWrapper.classList.add();
     const image = renderListingItemImage(listing.data.media);
-
     imageWrapper.append(image);
 
     const title = document.createElement('h2');

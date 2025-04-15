@@ -1,6 +1,5 @@
 import { updateAvatar } from '../../api/auth/profile/avatar.js';
 import { loadProfile } from '../../api/auth/state.js';
-
 import { renderMessage } from '../common/message.js';
 
 export function renderUpdateAvatarComp() {

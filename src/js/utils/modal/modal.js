@@ -1,5 +1,5 @@
 import { isLoggedIn } from '../../api/auth/state.js';
-import { renderModal } from '../../components/listings/modal/modal.js';
+import { renderModal } from '../../components/listings/listingItem/modal/modal.js';
 import { trapFocus } from './focus.js';
 import { renderListeners } from './listeners.js';
 
