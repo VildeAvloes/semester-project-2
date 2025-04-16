@@ -1,13 +1,10 @@
-import { getListings } from '../api/listings/get.js';
-import { getMyListings } from '../api/listings/getMyListings.js';
+import { getListings } from '../api/listings/getListings.js';
 import { renderMessage } from '../components/common/message.js';
 import { renderWrapper } from '../components/common/wrapper.js';
 import { renderDescription } from '../components/listings/description.js';
 import { renderLoadMoreButton } from '../components/listings/loadMore.js';
 import { renderSearchBar } from '../components/listings/searchBar.js';
 import { renderNextItems } from '../utils/listings/nextItems.js';
-
-const ITEMS_PER_PAGE = 9;
 
 export async function listingsPage() {
   const { container, row, col } = renderWrapper('Listings', 'col-md-10');
@@ -28,6 +25,7 @@ export async function listingsPage() {
   let allListings = [];
   let filteredListings = [];
   let currentIndex = 0;
+  const ITEMS_PER_PAGE = 9;
 
   function resetListings() {
     cardsContainer.innerHTML = '';
@@ -74,9 +72,6 @@ export async function listingsPage() {
     col.append(errorMessage);
     console.error(error);
   }
-
-  const myListings = await getMyListings();
-  console.log('Mine lister:', myListings);
 
   loadMoreButton.addEventListener('click', () =>
     handleNextItems(filteredListings)

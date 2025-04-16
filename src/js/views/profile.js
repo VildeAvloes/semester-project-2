@@ -2,7 +2,7 @@ import { isLoggedIn, loadProfile } from '../api/auth/state.js';
 import { renderWrapper } from '../components/common/wrapper.js';
 import { renderMyListings } from '../components/profile/myListings.js';
 import { renderProfileDetails } from '../components/profile/profileDetails.js';
-import { renderUpdateAvatarComp } from '../components/profile/avatarComp.js';
+import { renderUpdateAvatar } from '../components/profile/avatarComp.js';
 
 export async function profilePage() {
   if (!isLoggedIn()) {
@@ -22,7 +22,7 @@ export async function profilePage() {
 
   col.append(
     renderProfileDetails(userProfile),
-    renderUpdateAvatarComp(userProfile),
+    renderUpdateAvatar(userProfile),
     myListingsSection
   );
 

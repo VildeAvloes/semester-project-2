@@ -2,9 +2,9 @@ import { updateAvatar } from '../../api/auth/profile/avatar.js';
 import { loadProfile } from '../../api/auth/state.js';
 import { renderMessage } from '../common/message.js';
 
-export function renderUpdateAvatarComp() {
-  const updateAvatarComp = document.createElement('div');
-  updateAvatarComp.classList.add('d-flex', 'mb-4', 'flex-column');
+export function renderUpdateAvatar() {
+  const updateAvatarWrapper = document.createElement('div');
+  updateAvatarWrapper.classList.add('d-flex', 'mb-4', 'flex-column');
 
   const contentWrapper = document.createElement('div');
   contentWrapper.classList.add('d-flex', 'align-items-end');
@@ -74,7 +74,7 @@ export function renderUpdateAvatarComp() {
   });
 
   contentWrapper.append(inputWrapper, updateButton);
-  updateAvatarComp.append(contentWrapper, messageContainer);
+  updateAvatarWrapper.append(contentWrapper, messageContainer);
 
-  return updateAvatarComp;
+  return updateAvatarWrapper;
 }

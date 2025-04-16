@@ -1,6 +1,6 @@
 import { getMyListings } from '../../api/listings/getMyListings.js';
+import { renderNextItems } from '../../utils/listings/nextItems.js';
 import { renderMessage } from '../common/message.js';
-import { renderCard } from '../listings/card/card.js';
 
 export async function renderMyListings() {
   const myListings = document.createElement('div');
@@ -50,8 +50,12 @@ export async function renderMyListings() {
 
   loadMoreButtonWrapper.append(loadMoreButton);
 
+  let currentIndex = 0;
+  const ITEMS_PER_PAGE = 9;
+  let myListingsData = [];
+
   try {
-    const myListingsData = await getMyListings();
+    myListingsData = await getMyListings();
 
     if (!myListingsData.length) {
       listingCards.append(
@@ -59,12 +63,16 @@ export async function renderMyListings() {
       );
       loadMoreButton.classList.add('d-none');
     } else {
-      myListingsData.forEach((listing) => {
-        const card = renderCard(listing);
-        listingCards.append(card);
-      });
+      currentIndex = renderNextItems(
+        myListingsData,
+        listingCards,
+        currentIndex,
+        ITEMS_PER_PAGE
+      );
 
-      loadMoreButton.classList.add('d-none');
+      if (currentIndex >= myListingsData.length) {
+        loadMoreButton.classList.add('d-none');
+      }
     }
   } catch (error) {
     listingCards.append(
@@ -72,6 +80,19 @@ export async function renderMyListings() {
     );
     console.error('Error loading my listings:', error);
   }
+
+  loadMoreButton.addEventListener('click', () => {
+    currentIndex = renderNextItems(
+      myListingsData,
+      listingCards,
+      currentIndex,
+      ITEMS_PER_PAGE
+    );
+
+    if (currentIndex >= myListingsData.length) {
+      loadMoreButton.classList.add('d-none');
+    }
+  });
 
   myListings.append(listingCards, loadMoreButtonWrapper);
 

@@ -1,5 +1,5 @@
 import { loadProfile } from '../api/auth/state.js';
-import { getListing } from '../api/listings/get.js';
+import { getListing } from '../api/listings/getListing.js';
 import { renderMessage } from '../components/common/message.js';
 import { renderWrapper } from '../components/common/wrapper.js';
 import { renderListingItemImage } from '../components/listings/listingItem/listingItemImage.js';
