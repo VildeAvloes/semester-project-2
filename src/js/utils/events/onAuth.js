@@ -1,6 +1,6 @@
 import { register } from '../../api/auth/register.js';
 import { login } from '../../api/auth/login.js';
-import { loadProfile, saveProfile } from '../../api/auth/state.js';
+import { saveProfile } from '../../api/auth/state.js';
 
 export async function onAuth(event) {
   event.preventDefault();
@@ -24,9 +24,9 @@ export async function onAuth(event) {
       if (!profile.credits) {
         profile.credits = 1000;
       }
-      console.log('Profile before saving:', profile);
+
       saveProfile(profile);
-      console.log('Profile after saving:', loadProfile());
+
       location.hash = '#profile';
     } catch (error) {
       throw new Error('Registration failed', error);

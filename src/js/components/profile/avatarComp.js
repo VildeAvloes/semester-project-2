@@ -1,6 +1,6 @@
 import { updateAvatar } from '../../api/auth/profile/avatar.js';
 import { loadProfile } from '../../api/auth/state.js';
-import { load } from '../../storage/load.js';
+import { load, save } from '../../storage/index.js';
 import { renderMessage } from '../common/message.js';
 
 export function renderUpdateAvatar() {
@@ -51,7 +51,7 @@ export function renderUpdateAvatar() {
 
     try {
       await updateAvatar(avatarUrl, token, user.name);
-      localStorage.setItem('userAvatarUrl', avatarUrl);
+      save('userAvatarUrl', avatarUrl);
 
       const profileAvatar = document.getElementById('profile-avatar');
       profileAvatar.src = avatarUrl;

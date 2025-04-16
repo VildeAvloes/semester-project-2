@@ -33,13 +33,18 @@ export function renderBody(listing, isOwner) {
 
   body.append(bidsTitle, bidList);
 
+  let bidInput = null;
+
   if (!isOwner) {
-    const bidInput = document.createElement('input');
+    bidInput = document.createElement('input');
     bidInput.setAttribute('type', 'number');
     bidInput.classList.add('form-control');
     bidInput.placeholder = 'Enter your bid';
     body.append(bidInput);
   }
+
+  body.bidInput = bidInput;
+  body.bidList = bidList;
 
   return body;
 }

@@ -15,7 +15,9 @@ export function renderModal(closeModal, listing, isOwner) {
 
   const header = renderHeader(closeModal);
   const body = renderBody(listing, isOwner);
-  const footer = renderFooter(closeModal, isOwner);
+  const bidInput = body.bidInput;
+  const bidList = body.bidList;
+  const footer = renderFooter(closeModal, isOwner, listing, bidInput, bidList);
   modal.append(header, body, footer);
 
   return modal;

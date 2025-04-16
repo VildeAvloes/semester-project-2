@@ -102,8 +102,7 @@ export function createListingPage() {
         ],
       };
 
-      const response = await createListing(data);
-      console.log('response', response);
+      await createListing(data);
 
       const successMessage = renderMessage(
         'success',
