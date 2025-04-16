@@ -3,11 +3,12 @@ import { renderModal } from '../../components/listings/listingItem/modal/modal.j
 import { trapFocus } from './focus.js';
 import { renderListeners } from './listeners.js';
 
-export function openModal(listing) {
+export function openModal(listing, isOwner = false) {
   if (!isLoggedIn()) {
     location.hash = '#login';
     return;
   }
+
   const modalOverlay = document.createElement('div');
   modalOverlay.id = 'bid-modal';
   modalOverlay.classList.add(
@@ -29,7 +30,7 @@ export function openModal(listing) {
     cleanupListeners();
   };
 
-  const modal = renderModal(closeModal, listing);
+  const modal = renderModal(closeModal, listing, isOwner);
   modalOverlay.append(modal);
   document.body.append(modalOverlay);
 

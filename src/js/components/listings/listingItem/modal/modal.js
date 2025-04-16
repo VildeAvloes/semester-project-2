@@ -2,7 +2,7 @@ import { renderBody } from './body.js';
 import { renderFooter } from './footer.js';
 import { renderHeader } from './header.js';
 
-export function renderModal(closeModal, listing) {
+export function renderModal(closeModal, listing, isOwner) {
   const modal = document.createElement('div');
   modal.classList.add(
     'modal-container',
@@ -14,9 +14,8 @@ export function renderModal(closeModal, listing) {
   );
 
   const header = renderHeader(closeModal);
-  const body = renderBody(listing.bids);
-  const footer = renderFooter(closeModal);
-
+  const body = renderBody(listing, isOwner);
+  const footer = renderFooter(closeModal, isOwner);
   modal.append(header, body, footer);
 
   return modal;

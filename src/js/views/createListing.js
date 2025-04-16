@@ -1,33 +1,42 @@
+import { createListing } from '../api/listings/createListing.js';
+import { renderMessage } from '../components/common/message.js';
 import { renderWrapper } from '../components/common/wrapper.js';
 import { renderForm } from '../components/forms/form.js';
-import { renderInputGroup } from '../components/forms/inputs.js';
+import { renderInput } from '../components/forms/inputs.js';
 
 export function createListingPage() {
   const { container, col } = renderWrapper('Create Listing', 'col-md-8');
   const form = renderForm();
 
-  const titleGroup = renderInputGroup({
+  const titleObject = renderInput({
     id: 'title',
     label: 'Title',
     type: 'text',
     placeholder: 'Title of your listing',
   });
 
-  const mediaGroup = renderInputGroup({
+  const mediaObject = renderInput({
     id: 'media',
     label: 'Media (Image URL)',
     type: 'url',
     placeholder: 'https://example.com/image.jpg',
   });
 
-  const descriptionGroup = renderInputGroup({
+  const altTextObject = renderInput({
+    id: 'altText',
+    label: 'Alt Text for Image (Optional)',
+    type: 'text',
+    placeholder: 'Describe the image for accessibility (optional)',
+  });
+
+  const descriptionObject = renderInput({
     id: 'description',
     label: 'Description',
     type: 'textarea',
     placeholder: 'Describe your item',
   });
 
-  const deadlineGroup = renderInputGroup({
+  const deadlineObject = renderInput({
     id: 'deadline',
     label: 'Deadline',
     type: 'date',
@@ -52,13 +61,72 @@ export function createListingPage() {
   buttonWrapper.append(cancelButton, submitButton);
 
   form.append(
-    titleGroup,
-    mediaGroup,
-    descriptionGroup,
-    deadlineGroup,
+    titleObject,
+    mediaObject,
+    altTextObject,
+    descriptionObject,
+    deadlineObject,
     buttonWrapper
   );
-  col.append(form);
 
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    form.querySelector('.message-container')?.remove();
+
+    const title = titleObject.querySelector('input')?.value.trim();
+    const media = mediaObject.querySelector('input')?.value.trim();
+    const altText = altTextObject.querySelector('input')?.value.trim();
+    const description = descriptionObject
+      .querySelector('textarea')
+      ?.value.trim();
+    const deadline = deadlineObject.querySelector('input')?.value;
+
+    if (!title || !media || !description || !deadline) {
+      const errorMessage = renderMessage('error', 'All fields are required');
+      errorMessage.classList.add('message-container');
+      form.prepend(errorMessage);
+      return;
+    }
+
+    try {
+      const data = {
+        title,
+        description,
+        endsAt: new Date(deadline).toISOString(),
+        media: [
+          {
+            url: media,
+            alt: altText || title,
+          },
+        ],
+      };
+
+      const response = await createListing(data);
+      console.log('response', response);
+
+      const successMessage = renderMessage(
+        'success',
+        'Listing created successfully!'
+      );
+      successMessage.classList.add('message-container');
+      form.prepend(successMessage);
+
+      form.reset();
+
+      setTimeout(() => {
+        window.location.hash = '#profile';
+      }, 1000);
+    } catch (error) {
+      const errorMessage = renderMessage(
+        'error',
+        error.message || 'Something went wrong'
+      );
+      errorMessage.classList.add('message-container');
+      form.prepend(errorMessage);
+    }
+  });
+
+  col.append(form);
   return container;
 }

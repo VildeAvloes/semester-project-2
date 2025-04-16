@@ -1,3 +1,4 @@
+import { loadProfile } from '../api/auth/state.js';
 import { getListing } from '../api/listings/get.js';
 import { renderMessage } from '../components/common/message.js';
 import { renderWrapper } from '../components/common/wrapper.js';
@@ -17,37 +18,37 @@ export async function listingItemPage(id) {
 
   try {
     const listing = await getListing(id);
-    console.log(listing);
+    const data = listing.data;
+    const currentUser = loadProfile();
+    const currentSeller = data.seller;
+    const isOwner = currentSeller?.name === currentUser?.name;
 
     const imageWrapper = document.createElement('div');
-    const image = renderListingItemImage(listing.data.media);
+    const image = renderListingItemImage(data.media);
     imageWrapper.append(image);
 
     const title = document.createElement('h2');
-    title.textContent = listing.data.title;
+    title.textContent = data.title;
 
     const description = document.createElement('p');
-    description.textContent =
-      listing.data.description || 'No description available';
+    description.textContent = data.description || 'No description available';
 
     const deadline = document.createElement('p');
     deadline.classList.add('text-muted');
-    deadline.textContent = `Deadline: ${new Date(listing.data.endsAt).toLocaleString()}`;
+    deadline.textContent = `Deadline: ${new Date(data.endsAt).toLocaleString()}`;
 
     const bidButton = document.createElement('button');
     bidButton.setAttribute('type', 'button');
     bidButton.classList.add('btn', 'btn-primary', 'min-w-150');
-    bidButton.textContent = 'Make a bid';
-
+    bidButton.textContent = isOwner ? 'View current bids' : 'Make a bid';
     bidButton.addEventListener('click', () => {
-      openModal(listing.data);
+      openModal(data, isOwner);
     });
 
     col.append(imageWrapper, title, description, deadline, bidButton);
   } catch (error) {
     const errorMessage = renderMessage('error', 'Could not load listing');
     col.append(errorMessage);
-    console.error(errorMessage);
     console.error('Failed to load listingitem', error);
   }
 

@@ -1,4 +1,5 @@
 import { getListings } from '../api/listings/get.js';
+import { getMyListings } from '../api/listings/getMyListings.js';
 import { renderMessage } from '../components/common/message.js';
 import { renderWrapper } from '../components/common/wrapper.js';
 import { renderDescription } from '../components/listings/description.js';
@@ -67,11 +68,15 @@ export async function listingsPage() {
     allListings = data;
     filteredListings = data;
     handleNextItems(filteredListings);
+    console.log('all listings', allListings);
   } catch (error) {
     const errorMessage = renderMessage('error', 'Failed to load listings');
     col.append(errorMessage);
     console.error(error);
   }
+
+  const myListings = await getMyListings();
+  console.log('Mine lister:', myListings);
 
   loadMoreButton.addEventListener('click', () =>
     handleNextItems(filteredListings)

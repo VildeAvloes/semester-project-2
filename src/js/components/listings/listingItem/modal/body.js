@@ -1,23 +1,18 @@
-export function renderBody(bids = []) {
+export function renderBody(listing, isOwner) {
   const body = document.createElement('div');
   body.classList.add('modal-body');
 
-  const bidsTitle = document.createElement('h5');
+  const bidsTitle = document.createElement('h3');
   bidsTitle.textContent = 'Current Bids';
 
   const bidList = document.createElement('ul');
   bidList.classList.add('list-group', 'mb-3');
 
-  if (bids.length === 0) {
-    const noBids = document.createElement('li');
-    noBids.classList.add('list-group-item');
+  const bids = listing.bids || [];
+  const sortedBids = [...bids].sort((a, b) => b.amount - a.amount);
 
-    noBids.textContent = 'No current bids';
-    bidList.append(noBids);
-  } else {
-    bids.sort((a, b) => b.amount - a.amount);
-
-    bids.forEach((bid) => {
+  if (sortedBids.length > 0) {
+    sortedBids.forEach((bid) => {
       const bidItem = document.createElement('li');
       bidItem.classList.add('list-group-item');
 
@@ -29,13 +24,22 @@ export function renderBody(bids = []) {
       bidItem.append(` by ${bid.bidder?.name || 'Anonymous'}`);
       bidList.append(bidItem);
     });
+  } else {
+    const noBids = document.createElement('li');
+    noBids.classList.add('list-group-item');
+    noBids.textContent = 'No current bids';
+    bidList.append(noBids);
   }
 
-  const bidInput = document.createElement('input');
-  bidInput.setAttribute('type', 'number');
-  bidInput.classList.add('form-control');
-  bidInput.placeholder = 'Enter your bid';
+  body.append(bidsTitle, bidList);
 
-  body.append(bidsTitle, bidList, bidInput);
+  if (!isOwner) {
+    const bidInput = document.createElement('input');
+    bidInput.setAttribute('type', 'number');
+    bidInput.classList.add('form-control');
+    bidInput.placeholder = 'Enter your bid';
+    body.append(bidInput);
+  }
+
   return body;
 }

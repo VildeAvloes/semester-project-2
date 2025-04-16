@@ -1,6 +1,6 @@
-export function renderButtonGroup(view = 'register') {
-  const buttonGroup = document.createElement('div');
-  buttonGroup.classList.add('d-flex', 'flex-column', 'align-items-center');
+export function renderButtons(view = 'register') {
+  const buttonWrapper = document.createElement('div');
+  buttonWrapper.classList.add('d-flex', 'flex-column', 'align-items-center');
 
   if (view === 'register') {
     const registerButton = document.createElement('button');
@@ -23,7 +23,7 @@ export function renderButtonGroup(view = 'register') {
       location.hash = '#login';
     });
 
-    buttonGroup.append(registerButton, registerText, loginButton);
+    buttonWrapper.append(registerButton, registerText, loginButton);
   }
 
   if (view === 'login') {
@@ -47,8 +47,8 @@ export function renderButtonGroup(view = 'register') {
       location.hash = '#register';
     });
 
-    buttonGroup.append(loginButton, registerText, registerButton);
+    buttonWrapper.append(loginButton, registerText, registerButton);
   }
 
-  return buttonGroup;
+  return buttonWrapper;
 }

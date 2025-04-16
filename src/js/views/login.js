@@ -1,5 +1,5 @@
-import { renderInputGroup } from '../components/forms/inputs.js';
-import { renderButtonGroup } from '../components/forms/buttons.js';
+import { renderInput } from '../components/forms/inputs.js';
+import { renderButtons } from '../components/forms/buttons.js';
 import { renderForm } from '../components/forms/form.js';
 import { onAuth } from '../utils/events/onAuth.js';
 import { validateLoginForm } from '../utils/forms/validateForm.js';
@@ -10,20 +10,20 @@ export function loginPage() {
   const { container, col } = renderWrapper('Log In', 'col-md-6');
   const form = renderForm();
 
-  const emailGroup = renderInputGroup({
+  const emailGroup = renderInput({
     id: 'email',
     label: 'E-mail',
     type: 'email',
     placeholder: 'E-mail',
   });
-  const passwordGroup = renderInputGroup({
+  const passwordGroup = renderInput({
     id: 'password',
     label: 'Password',
     type: 'password',
     placeholder: 'Password',
   });
 
-  const buttonGroup = renderButtonGroup('login');
+  const buttonGroup = renderButtons('login');
 
   form.append(emailGroup, passwordGroup, buttonGroup);
 

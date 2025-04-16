@@ -11,7 +11,7 @@ export function renderHeader(onClose) {
 
   const title = document.createElement('h2');
   title.classList.add('modal-title', 'm-0');
-  title.textContent = 'Place your bid';
+  title.textContent = 'Bids';
 
   const closeButton = document.createElement('button');
   closeButton.classList.add('btn-close');

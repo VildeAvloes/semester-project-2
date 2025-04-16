@@ -1,4 +1,8 @@
-export function renderMyListings() {
+import { getMyListings } from '../../api/listings/getMyListings.js';
+import { renderMessage } from '../common/message.js';
+import { renderCard } from '../listings/card/card.js';
+
+export async function renderMyListings() {
   const myListings = document.createElement('div');
   myListings.classList.add('mt-4');
 
@@ -45,6 +49,30 @@ export function renderMyListings() {
   loadMoreButton.textContent = 'Load more';
 
   loadMoreButtonWrapper.append(loadMoreButton);
+
+  try {
+    const myListingsData = await getMyListings();
+
+    if (!myListingsData.length) {
+      listingCards.append(
+        renderMessage('info', 'You have not created any listings yet.')
+      );
+      loadMoreButton.classList.add('d-none');
+    } else {
+      myListingsData.forEach((listing) => {
+        const card = renderCard(listing);
+        listingCards.append(card);
+      });
+
+      loadMoreButton.classList.add('d-none');
+    }
+  } catch (error) {
+    listingCards.append(
+      renderMessage('error', 'Failed to load your listings.')
+    );
+    console.error('Error loading my listings:', error);
+  }
+
   myListings.append(listingCards, loadMoreButtonWrapper);
 
   return myListings;

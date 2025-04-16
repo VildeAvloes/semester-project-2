@@ -1,6 +1,6 @@
 import { renderWrapper } from '../components/common/wrapper.js';
-import { renderInputGroup } from '../components/forms/inputs.js';
-import { renderButtonGroup } from '../components/forms/buttons.js';
+import { renderInput } from '../components/forms/inputs.js';
+import { renderButtons } from '../components/forms/buttons.js';
 import { renderForm } from '../components/forms/form.js';
 import { onAuth } from '../utils/events/onAuth.js';
 import { validateRegisterForm } from '../utils/forms/validateForm.js';
@@ -15,28 +15,28 @@ export function registerPage() {
   const { container, col } = renderWrapper('Register', 'col-md-6');
   const form = renderForm();
 
-  const nameGroup = renderInputGroup({
+  const nameGroup = renderInput({
     id: 'name',
     label: 'Name',
     type: 'text',
     placeholder: 'Name',
   });
 
-  const emailGroup = renderInputGroup({
+  const emailGroup = renderInput({
     id: 'email',
     label: 'E-mail',
     type: 'email',
     placeholder: 'E-mail',
   });
 
-  const passwordGroup = renderInputGroup({
+  const passwordGroup = renderInput({
     id: 'password',
     label: 'Password',
     type: 'password',
     placeholder: 'Password',
   });
 
-  const buttonGroup = renderButtonGroup('register');
+  const buttonGroup = renderButtons('register');
 
   form.append(nameGroup, emailGroup, passwordGroup, buttonGroup);
 

@@ -1,4 +1,4 @@
-export function renderFooter(onClose) {
+export function renderFooter(onClose, isOwner) {
   const footer = document.createElement('div');
   footer.classList.add(
     'modal-footer',
@@ -12,11 +12,15 @@ export function renderFooter(onClose) {
   cancelButton.classList.add('btn', 'btn-outline-secondary', 'min-w-150');
   cancelButton.textContent = 'Cancel';
   cancelButton.addEventListener('click', onClose);
+  footer.append(cancelButton);
 
-  const submitButton = document.createElement('button');
-  submitButton.classList.add('btn', 'btn-primary', 'min-w-150');
-  submitButton.textContent = 'Submit Bid';
+  if (!isOwner) {
+    const submitButton = document.createElement('button');
+    submitButton.classList.add('btn', 'btn-primary', 'min-w-150');
+    submitButton.textContent = 'Submit Bid';
 
-  footer.append(cancelButton, submitButton);
+    footer.append(submitButton);
+  }
+
   return footer;
 }
