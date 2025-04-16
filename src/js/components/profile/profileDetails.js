@@ -1,6 +1,6 @@
 export function renderProfileDetails(profile) {
   const avatarUrl =
-    localStorage.getItem('userAvatarUrl') ||
+    localStorage.getItem('profileAvatar_' + profile.name) ||
     profile.avatarUrl ||
     `https://ui-avatars.com/api/?name=${encodeURIComponent(profile.name)}&background=b9c5d3&color=2c3e50`;
 

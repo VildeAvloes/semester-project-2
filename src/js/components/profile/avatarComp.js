@@ -1,5 +1,6 @@
 import { updateAvatar } from '../../api/auth/profile/avatar.js';
 import { loadProfile } from '../../api/auth/state.js';
+import { load } from '../../storage/load.js';
 import { renderMessage } from '../common/message.js';
 
 export function renderUpdateAvatar() {
@@ -36,7 +37,7 @@ export function renderUpdateAvatar() {
   updateButton.addEventListener('click', async () => {
     const avatarUrl = avatarInput.value.trim();
     const user = loadProfile();
-    const token = localStorage.getItem('token');
+    const token = load('token');
 
     if (!avatarUrl) {
       const errorMessage = renderMessage(

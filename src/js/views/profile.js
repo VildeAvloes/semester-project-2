@@ -16,6 +16,7 @@ export async function profilePage() {
     return;
   }
 
+  console.log(userProfile);
   const { container, row, col } = renderWrapper('My Profile', 'col-md-8');
 
   const myListingsSection = await renderMyListings();

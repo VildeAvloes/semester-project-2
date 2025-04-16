@@ -1,3 +1,4 @@
+import { save } from '../../../storage/save.js';
 import { API_BASE, API_PROFILES } from '../../constants.js';
 import { authFetch } from '../../fetch.js';
 
@@ -13,6 +14,7 @@ export async function updateAvatar(avatarUrl, token, username) {
   });
 
   if (response.ok) {
+    save('profileAvatar_' + username, avatarUrl);
     return await response.json();
   }
 
