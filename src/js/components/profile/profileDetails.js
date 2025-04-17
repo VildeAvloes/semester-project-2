@@ -1,14 +1,16 @@
 export function renderProfileDetails(profile) {
+  const storedAvatar = localStorage.getItem(`profileAvatar_${profile.name}`);
+
   const avatarUrl =
-    localStorage.getItem('profileAvatar_' + profile.name) ||
-    profile.avatarUrl ||
+    storedAvatar ||
+    profile.avatar ||
     `https://ui-avatars.com/api/?name=${encodeURIComponent(profile.name)}&background=b9c5d3&color=2c3e50`;
 
   const avatar = document.createElement('img');
   avatar.id = 'profile-avatar';
   avatar.src = avatarUrl;
   avatar.alt = 'Avatar';
-  avatar.classList.add('rounded-circle', 'me-4');
+  avatar.classList.add('rounded-circle', 'me-4'); // 💅 Styling beholdt
   avatar.width = 100;
   avatar.height = 100;
 
@@ -29,7 +31,7 @@ export function renderProfileDetails(profile) {
   const creditsValue = document.createElement('p');
   creditsValue.id = 'profile-credits';
   creditsValue.classList.add('fs-5', 'fw-bold', 'text-secondary');
-  creditsValue.textContent = profile.credits || '0';
+  creditsValue.textContent = profile.credits ?? '0';
 
   const creditsContainer = document.createElement('div');
   creditsContainer.classList.add('d-flex');

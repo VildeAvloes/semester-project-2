@@ -113,7 +113,7 @@ export function createListingPage() {
 
       setTimeout(() => {
         window.location.hash = '#profile';
-      }, 1000);
+      }, 1500);
     } catch (error) {
       const errorMessage = renderMessage(
         'error',

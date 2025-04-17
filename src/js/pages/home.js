@@ -19,9 +19,9 @@ export function homePage() {
   heading.classList.add('fw-bold', 'mb-3');
   heading.textContent = 'Welcome to Bid Society';
 
-  const subText = document.createElement('p');
-  subText.classList.add('lead', 'text-muted');
-  subText.textContent =
+  const paragraph = document.createElement('p');
+  paragraph.classList.add('lead', 'text-muted');
+  paragraph.textContent =
     'Discover unique treasures, place your bids, and win second-hand gems from people just like you.';
 
   const ctaButton = document.createElement('a');
@@ -29,7 +29,7 @@ export function homePage() {
   ctaButton.href = '#listings';
   ctaButton.textContent = 'Browse Listings';
 
-  welcomeText.append(heading, subText, ctaButton);
+  welcomeText.append(heading, paragraph, ctaButton);
 
   const colImage = document.createElement('div');
   colImage.classList.add('col-12', 'col-md-6', 'text-center');
@@ -43,7 +43,6 @@ export function homePage() {
 
   welcomeContainer.append(welcomeText, colImage);
 
-  // Legg til How It Works seksjonen fra den nye komponenten
   const howItWorksSection = renderHowItWorks();
 
   container.append(welcomeContainer, howItWorksSection);

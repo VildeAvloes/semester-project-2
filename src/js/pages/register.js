@@ -17,38 +17,38 @@ export function registerPage() {
   const { container, col } = renderWrapper('Register', 'col-md-6');
   const form = renderForm();
 
-  const nameGroup = renderInput({
+  const name = renderInput({
     id: 'name',
     label: 'Name',
     type: 'text',
     placeholder: 'Name',
   });
 
-  const emailGroup = renderInput({
+  const email = renderInput({
     id: 'email',
     label: 'E-mail',
     type: 'email',
     placeholder: 'E-mail',
   });
 
-  const passwordGroup = renderInput({
+  const password = renderInput({
     id: 'password',
     label: 'Password',
     type: 'password',
     placeholder: 'Password',
   });
 
-  const buttonGroup = renderButtons('register');
+  const buttons = renderButtons('register');
 
-  form.append(nameGroup, emailGroup, passwordGroup, buttonGroup);
+  form.append(name, email, password, buttons);
 
   form.addEventListener('submit', (event) => {
     event.preventDefault();
 
     const isValid = validateRegisterForm([
-      { group: nameGroup, field: 'name' },
-      { group: emailGroup, field: 'email' },
-      { group: passwordGroup, field: 'password' },
+      { group: name, field: 'name' },
+      { group: email, field: 'email' },
+      { group: password, field: 'password' },
     ]);
 
     if (isValid) {

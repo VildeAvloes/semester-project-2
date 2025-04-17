@@ -20,7 +20,7 @@ export function errorPage() {
   const backButton = document.createElement('a');
   backButton.href = '#home';
   backButton.classList.add('btn', 'btn-primary', 'mt-4');
-  backButton.textContent = 'Go back home';
+  backButton.innerHTML = `<i class="bi bi-arrow-left"></i>Go back home`;
 
   wrapper.append(errorMessage, backButton);
   col.append(wrapper);

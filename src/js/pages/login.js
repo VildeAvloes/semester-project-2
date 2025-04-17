@@ -11,13 +11,13 @@ export function loginPage() {
   const { container, col } = renderWrapper('Log In', 'col-md-6');
   const form = renderForm();
 
-  const emailGroup = renderInput({
+  const email = renderInput({
     id: 'email',
     label: 'E-mail',
     type: 'email',
     placeholder: 'E-mail',
   });
-  const passwordGroup = renderInput({
+  const password = renderInput({
     id: 'password',
     label: 'Password',
     type: 'password',
@@ -26,7 +26,7 @@ export function loginPage() {
 
   const buttonGroup = renderButtons('login');
 
-  form.append(emailGroup, passwordGroup, buttonGroup);
+  form.append(email, password, buttonGroup);
 
   form.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -35,8 +35,8 @@ export function loginPage() {
     if (previousMessage) previousMessage.remove();
 
     const isValid = validateLoginForm([
-      { group: emailGroup, field: 'email' },
-      { group: passwordGroup, field: 'password' },
+      { group: email, field: 'email' },
+      { group: password, field: 'password' },
     ]);
 
     if (isValid) {
