@@ -8,13 +8,13 @@ export function renderNavbar() {
   container.classList.add('container');
 
   const brand = document.createElement('a');
-  brand.classList.add('navbar-brand');
+  brand.classList.add('navbar-brand', 'fs-1');
   brand.textContent = 'Bid Society';
   brand.href = '#home';
 
   const toggleButton = document.createElement('button');
   toggleButton.type = 'button';
-  toggleButton.classList.add('navbar-toggler');
+  toggleButton.classList.add('navbar-toggler', 'border-0', 'text-dark');
   toggleButton.setAttribute('data-bs-toggle', 'collapse');
   toggleButton.setAttribute('data-bs-target', '#mainNavbar');
   toggleButton.setAttribute('aria-controls', 'mainNavbar');
@@ -22,7 +22,7 @@ export function renderNavbar() {
   toggleButton.setAttribute('aria-label', 'Toggle navigation');
 
   const toggleIcon = document.createElement('span');
-  toggleIcon.classList.add('navbar-toggler-icon');
+  toggleIcon.classList.add('navbar-toggler-icon', 'text-dark');
   toggleButton.append(toggleIcon);
 
   const navbarCollapse = document.createElement('div');
@@ -53,7 +53,7 @@ export function renderNavbar() {
     li.classList.add('nav-item');
 
     const a = document.createElement('a');
-    a.classList.add('nav-link');
+    a.classList.add('nav-link', 'text-uppercase', 'fw-bold');
     a.textContent = link.name;
     a.href = link.href;
 

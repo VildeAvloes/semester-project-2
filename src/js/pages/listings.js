@@ -58,15 +58,16 @@ export async function listingsPage() {
 
   const searchBar = renderSearchBar(handleSearch);
 
-  col.append(descriptionContainer, searchBar, cardsContainer, loadMoreButton);
-  row.append(col);
-  container.append(row);
+  col.append(descriptionContainer, searchBar);
 
   try {
     const { data } = await getListings();
+
     allListings = data;
     filteredListings = data;
     handleNextItems(filteredListings);
+
+    col.append(cardsContainer, loadMoreButton);
   } catch (error) {
     const errorMessage = renderMessage('error', 'Failed to load listings');
     col.append(errorMessage);
@@ -76,6 +77,9 @@ export async function listingsPage() {
   loadMoreButton.addEventListener('click', () =>
     handleNextItems(filteredListings)
   );
+
+  row.append(col);
+  container.append(row);
 
   return container;
 }

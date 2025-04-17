@@ -1,4 +1,4 @@
-import { renderNavbar } from './components/common/index.js';
+import { renderFooter, renderNavbar } from './components/common/index.js';
 import { initRouter } from '../js/routes/routes.js';
 
 export function updateNavbar() {
@@ -8,8 +8,15 @@ export function updateNavbar() {
   navBarContainer.append(navbar);
 }
 
+export function updateFooter() {
+  const footerContainer = document.getElementById('footer');
+  footerContainer.innerHTML = '';
+  const footer = renderFooter();
+  footerContainer.append(footer);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   updateNavbar();
-
+  updateFooter();
   initRouter();
 });

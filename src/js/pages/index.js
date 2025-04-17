@@ -5,3 +5,4 @@ export * from './register.js';
 export * from './login.js';
 export * from './listingItem.js';
 export * from './createListing.js';
+export * from './error.js';

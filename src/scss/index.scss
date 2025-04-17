@@ -1,33 +1,35 @@
 @import './_variables.scss';
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';
 
-.navbar-brand {
-  font-family: 'Georgia', serif;
-  font-size: 3em;
+html,
+body {
+  height: 100%;
 }
 
-.nav-link {
-  text-transform: uppercase;
-  font-weight: bold;
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+.navbar-brand,
+.card-title {
+  font-family: $headings-font-family;
 }
 
 .navbar-toggler {
-  border: none;
-  color: $dark;
-  .navbar-toggler-icon {
-    color: $dark;
+  &:focus {
+    box-shadow: none;
+  }
 
+  .navbar-toggler-icon {
     &:hover {
       color: $primary;
     }
   }
-  &:focus {
-    box-shadow: none;
-  }
-}
-
-.card-title {
-  font-family: $headings-font-family;
 }
 
 .modal-container {
