@@ -1,16 +1,13 @@
 export function renderProfileDetails(profile) {
   const storedAvatar = localStorage.getItem(`profileAvatar_${profile.name}`);
 
-  const avatarUrl =
-    storedAvatar ||
-    profile.avatar ||
-    `https://ui-avatars.com/api/?name=${encodeURIComponent(profile.name)}&background=b9c5d3&color=2c3e50`;
-
   const avatar = document.createElement('img');
   avatar.id = 'profile-avatar';
-  avatar.src = avatarUrl;
+  avatar.src = storedAvatar
+    ? profile.avatar
+    : '../../../../public/assets/avatar.png';
   avatar.alt = 'Avatar';
-  avatar.classList.add('rounded-circle', 'me-4'); // 💅 Styling beholdt
+  avatar.classList.add('rounded-circle', 'me-4');
   avatar.width = 100;
   avatar.height = 100;
 
