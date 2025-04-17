@@ -2,7 +2,7 @@
 
 ## _Bid Society_
 
-![A screenshot of the app](public/assets/bid-society-screenshot.png)
+![A screenshot of the app](./public/assets/bid-society-screenshot.png)
 
 ## 📚 Description
 
@@ -28,9 +28,9 @@ This project uses the [Noroff API V2](https://docs.noroff.dev/docs/v2) for all u
 
 ---
 
-## 🚀 Visit the Site
+## 🚀 Live Version
 
-**Coming soon...**
+[Bid Society](https://bid-society.netlify.app/)
 
 ---
 
@@ -101,12 +101,13 @@ npm run lint
 - Prettier
 - Eslint
 - Live Server
+- Netlify
 
 ## 📄 License
 
 This project is open for educational use as part of Noroff's Semester Project 2. Please contact me before reusing the code for anything outside of that.
 
-## Contact
+## 📬 Contact
 
-[My GitHub Profile](https://github.com/VildeAvloes)
-[My LinkedIn Page](https://www.linkedin.com/in/vilde-avloes/).
+- [My GitHub Profile](https://github.com/VildeAvloes)
+- [My LinkedIn Page](https://www.linkedin.com/in/vilde-avloes/).
