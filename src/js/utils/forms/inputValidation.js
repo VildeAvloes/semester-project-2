@@ -1,5 +1,5 @@
-import { renderMessage } from '../../components/common/message.js';
-import { validateName, validateEmail, validatePassword } from './rules.js';
+import { renderMessage } from '../../components/common/index.js';
+import { validateName, validateEmail, validatePassword } from './index.js';
 
 export function validateInput(inputGroup, value, field) {
   let errorMessage;

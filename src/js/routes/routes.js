@@ -1,14 +1,14 @@
-import { renderView } from '../utils/renderView.js';
-import * as views from './../views/index.js';
+import { renderPage } from '../utils/renderPage.js';
+import * as page from '../pages/index.js';
 
 const routes = {
-  '': views.homePage,
-  '#home': views.homePage,
-  '#listings': views.listingsPage,
-  '#profile': views.profilePage,
-  '#register': views.registerPage,
-  '#login': views.loginPage,
-  '#create-listing': views.createListingPage,
+  '': page.homePage,
+  '#home': page.homePage,
+  '#listings': page.listingsPage,
+  '#profile': page.profilePage,
+  '#register': page.registerPage,
+  '#login': page.loginPage,
+  '#create-listing': page.createListingPage,
 };
 
 function onRouteChange() {
@@ -16,16 +16,16 @@ function onRouteChange() {
 
   if (hash.startsWith('#listing/')) {
     const id = hash.split('/')[1];
-    renderView(views.listingItemPage(id));
+    renderPage(page.listingItemPage(id));
     return;
   }
 
   const route = routes[hash];
 
   if (route) {
-    renderView(route());
+    renderPage(route());
   } else {
-    renderView(views.notFoundView());
+    renderPage(page.notFoundView());
   }
 }
 

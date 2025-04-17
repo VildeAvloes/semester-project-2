@@ -1,8 +1,10 @@
-import { isLoggedIn, loadProfile } from '../api/auth/state.js';
-import { renderWrapper } from '../components/common/wrapper.js';
-import { renderMyListings } from '../components/profile/myListings.js';
-import { renderProfileDetails } from '../components/profile/profileDetails.js';
-import { renderUpdateAvatar } from '../components/profile/avatarComp.js';
+import { isLoggedIn, loadProfile } from '../api/auth/index.js';
+import { renderWrapper } from '../components/common/index.js';
+import {
+  renderMyListings,
+  renderProfileDetails,
+  renderUpdateAvatar,
+} from '../components/profile/index.js';
 
 export async function profilePage() {
   if (!isLoggedIn()) {

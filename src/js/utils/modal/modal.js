@@ -1,7 +1,6 @@
-import { isLoggedIn } from '../../api/auth/state.js';
-import { renderModal } from '../../components/listings/listingItem/modal/modal.js';
-import { trapFocus } from './focus.js';
-import { renderListeners } from './listeners.js';
+import { isLoggedIn } from '../../api/auth/index.js';
+import { renderListeners, trapFocus } from './index.js';
+import { renderModal } from '../../components/listings/modal/index.js';
 
 export function openModal(listing, isOwner = false) {
   if (!isLoggedIn()) {

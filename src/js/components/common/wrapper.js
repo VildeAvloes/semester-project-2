@@ -1,4 +1,4 @@
-import { renderHeader } from './header.js';
+import { renderHeader } from './index.js';
 
 export function renderWrapper(headingText, contentColClass = 'col-md-8') {
   const container = document.createElement('div');

@@ -1,5 +1,5 @@
-import { renderMessage } from '../../components/common/message.js';
-import { validateInput } from './inputValidation.js';
+import { renderMessage } from '../../components/common/index.js';
+import { validateInput } from './index.js';
 
 export function validateRegisterForm(fields = []) {
   let isValid = true;

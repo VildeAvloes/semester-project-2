@@ -1,6 +1,6 @@
-import { getMyListings } from '../../api/listings/getMyListings.js';
+import { getMyListings } from '../../api/auth/listings/index.js';
 import { renderNextItems } from '../../utils/listings/nextItems.js';
-import { renderMessage } from '../common/message.js';
+import { renderMessage } from '../common/index.js';
 
 export async function renderMyListings() {
   const myListings = document.createElement('div');

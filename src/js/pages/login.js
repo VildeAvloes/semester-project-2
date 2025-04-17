@@ -1,10 +1,11 @@
-import { renderInput } from '../components/forms/inputs.js';
-import { renderButtons } from '../components/forms/buttons.js';
-import { renderForm } from '../components/forms/form.js';
+import { renderMessage, renderWrapper } from '../components/common/index.js';
+import {
+  renderButtons,
+  renderForm,
+  renderInput,
+} from '../components/forms/index.js';
 import { onAuth } from '../utils/events/onAuth.js';
-import { validateLoginForm } from '../utils/forms/validateForm.js';
-import { renderMessage } from '../components/common/message.js';
-import { renderWrapper } from '../components/common/wrapper.js';
+import { validateLoginForm } from '../utils/forms/index.js';
 
 export function loginPage() {
   const { container, col } = renderWrapper('Log In', 'col-md-6');

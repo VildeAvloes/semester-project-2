@@ -1,5 +1,5 @@
-import { renderNavbar } from './components/common/nav.js';
-import { initRouter } from './routes/routes.js';
+import { renderNavbar } from './components/common/index.js';
+import { initRouter } from '../js/routes/routes.js';
 
 export function updateNavbar() {
   const navBarContainer = document.getElementById('nav-bar');

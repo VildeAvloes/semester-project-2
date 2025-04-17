@@ -1,4 +1,4 @@
-import { save } from '../../../storage/save.js';
+import { save } from '../../../storage/index.js';
 import { API_BASE, API_PROFILES } from '../../constants.js';
 import { authFetch } from '../../fetch.js';
 

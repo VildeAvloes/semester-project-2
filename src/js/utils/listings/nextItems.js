@@ -1,4 +1,4 @@
-import { renderCard } from '../../components/listings/card/card.js';
+import { renderCard } from '../../components/listings/index.js';
 
 export function renderNextItems(listings, container, startIndex, count) {
   const next = listings.slice(startIndex, startIndex + count);

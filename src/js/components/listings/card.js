@@ -1,4 +1,4 @@
-import { renderCardImage } from './cardImage.js';
+import { renderCardImage } from './index.js';
 
 export function renderCard(listing) {
   const { title, description, media, id } = listing;

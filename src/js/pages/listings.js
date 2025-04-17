@@ -1,9 +1,10 @@
-import { getListings } from '../api/listings/getListings.js';
-import { renderMessage } from '../components/common/message.js';
-import { renderWrapper } from '../components/common/wrapper.js';
-import { renderDescription } from '../components/listings/description.js';
-import { renderLoadMoreButton } from '../components/listings/loadMore.js';
-import { renderSearchBar } from '../components/listings/searchBar.js';
+import { getListings } from '../api/auth/listings/index.js';
+import { renderMessage, renderWrapper } from '../components/common/index.js';
+import {
+  renderDescription,
+  renderLoadMoreButton,
+  renderSearchBar,
+} from '../components/listings/index.js';
 import { renderNextItems } from '../utils/listings/nextItems.js';
 
 export async function listingsPage() {
@@ -66,7 +67,6 @@ export async function listingsPage() {
     allListings = data;
     filteredListings = data;
     handleNextItems(filteredListings);
-    console.log('all listings', allListings);
   } catch (error) {
     const errorMessage = renderMessage('error', 'Failed to load listings');
     col.append(errorMessage);

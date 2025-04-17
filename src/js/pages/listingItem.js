@@ -1,9 +1,8 @@
-import { loadProfile } from '../api/auth/state.js';
-import { getListing } from '../api/listings/getListing.js';
-import { renderMessage } from '../components/common/message.js';
-import { renderWrapper } from '../components/common/wrapper.js';
-import { renderListingItemImage } from '../components/listings/listingItem/listingItemImage.js';
-import { openModal } from '../utils/modal/modal.js';
+import { getListing } from '../api/auth/listings/index.js';
+import { loadProfile } from '../api/auth/index.js';
+import { renderMessage, renderWrapper } from '../components/common/index.js';
+import { renderListingItemImage } from '../components/listings/index.js';
+import { openModal } from '../utils/modal/index.js';
 
 export async function listingItemPage(id) {
   const { container, row, col } = renderWrapper('Listing Details', 'col-md-8');

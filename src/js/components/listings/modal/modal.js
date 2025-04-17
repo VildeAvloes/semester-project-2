@@ -1,6 +1,4 @@
-import { renderBody } from './body.js';
-import { renderFooter } from './footer.js';
-import { renderHeader } from './header.js';
+import { renderBody, renderFooter, renderHeader } from './index.js';
 
 export function renderModal(closeModal, listing, isOwner) {
   const modal = document.createElement('div');

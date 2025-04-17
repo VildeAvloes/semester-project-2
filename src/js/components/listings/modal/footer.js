@@ -1,6 +1,6 @@
-import { placeBid } from '../../../../api/auth/bid.js';
-import { loadProfile, saveProfile } from '../../../../api/auth/state.js';
-import { renderMessage } from '../../../common/message.js';
+import { loadProfile, saveProfile } from '../../../api/auth/index.js';
+import { placeBid } from '../../../api/auth/listings/index.js';
+import { renderMessage } from '../../common/message.js';
 
 export function renderFooter(onClose, isOwner, listing, bidInput, bidList) {
   const footer = document.createElement('div');

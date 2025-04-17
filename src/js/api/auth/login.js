@@ -1,8 +1,8 @@
 import { API_AUTH, API_BASE, API_LOGIN } from '../constants.js';
-import { save } from '../../storage/save.js';
 import { authFetch } from '../fetch.js';
+import { save } from '../../storage/index.js';
+import { loadProfile } from './index.js';
 import { updateNavbar } from '../../index.js';
-import { loadProfile } from './state.js';
 
 export async function login(email, password) {
   const response = await authFetch(API_BASE + API_AUTH + API_LOGIN, {

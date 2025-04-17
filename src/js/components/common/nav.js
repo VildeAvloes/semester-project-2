@@ -1,5 +1,4 @@
-import { logout } from '../../api/auth/logout.js';
-import { isLoggedIn } from '../../api/auth/state.js';
+import { isLoggedIn, logout } from '../../api/auth/index.js';
 
 export function renderNavbar() {
   const nav = document.createElement('nav');

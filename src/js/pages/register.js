@@ -1,10 +1,12 @@
-import { renderWrapper } from '../components/common/wrapper.js';
-import { renderInput } from '../components/forms/inputs.js';
-import { renderButtons } from '../components/forms/buttons.js';
-import { renderForm } from '../components/forms/form.js';
+import { isLoggedIn } from '../api/auth/index.js';
+import { renderWrapper } from '../components/common/index.js';
+import {
+  renderButtons,
+  renderForm,
+  renderInput,
+} from '../components/forms/index.js';
 import { onAuth } from '../utils/events/onAuth.js';
-import { validateRegisterForm } from '../utils/forms/validateForm.js';
-import { isLoggedIn } from '../api/auth/state.js';
+import { validateRegisterForm } from '../utils/forms/index.js';
 
 export function registerPage() {
   if (isLoggedIn()) {

@@ -1,7 +1,7 @@
-import { updateAvatar } from '../../api/auth/profile/avatar.js';
-import { loadProfile } from '../../api/auth/state.js';
+import { loadProfile } from '../../api/auth/index.js';
 import { load, save } from '../../storage/index.js';
-import { renderMessage } from '../common/message.js';
+import { renderMessage } from '../common/index.js';
+import { updateAvatar } from '../../api/auth/profile/avatar.js';
 
 export function renderUpdateAvatar() {
   const updateAvatarWrapper = document.createElement('div');

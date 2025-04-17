@@ -1,8 +1,6 @@
-import { createListing } from '../api/listings/createListing.js';
-import { renderMessage } from '../components/common/message.js';
-import { renderWrapper } from '../components/common/wrapper.js';
-import { renderForm } from '../components/forms/form.js';
-import { renderInput } from '../components/forms/inputs.js';
+import { createListing } from '../api/auth/listings/index.js';
+import { renderMessage, renderWrapper } from '../components/common/index.js';
+import { renderForm, renderInput } from '../components/forms/index.js';
 
 export function createListingPage() {
   const { container, col } = renderWrapper('Create Listing', 'col-md-8');
