@@ -20,25 +20,17 @@ The project adheres to the technical constraints approved by the company's CTO a
 8. A registered user may bid on another user's listing
 9. An unregistered user may search listings
 
----
-
 ## 🌐 API
 
 This project uses the [Noroff API V2](https://docs.noroff.dev/docs/v2) for all user and auction-related functionality.
-
----
 
 ## 🚀 Live Version
 
 [Bid Society](https://bid-society.netlify.app/)
 
----
-
 ## 🤝 Contribution
 
 If you'd like to contribute, feel free to fork the repo and follow the steps under _Getting Started_.
-
----
 
 ## 🛠️ Getting Started
 
