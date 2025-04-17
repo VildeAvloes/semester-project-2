@@ -4,7 +4,7 @@
 
 ![A screenshot of the app](./public/assets/bid-society-screenshot.png)
 
-## 📚 Description
+## :books: Description
 
 This is my delivery for **Semester Project 2** at Noroff. The task was to apply the skills acquired over the past semesters to build an **auction website** using the [Noroff API V2](https://docs.noroff.dev/docs/v2).
 
@@ -20,19 +20,19 @@ The project adheres to the technical constraints approved by the company's CTO a
 8. A registered user may bid on another user's listing
 9. An unregistered user may search listings
 
-## 🌐 API
+## :earth-africa: API
 
 This project uses the [Noroff API V2](https://docs.noroff.dev/docs/v2) for all user and auction-related functionality.
 
-## 🚀 Live Version
+## :rocket: Live Version
 
 [Bid Society](https://bid-society.netlify.app/)
 
-## 🤝 Contribution
+## :handshake: Contribution
 
 If you'd like to contribute, feel free to fork the repo and follow the steps under _Getting Started_.
 
-## 🛠️ Getting Started
+## :tools: Getting Started
 
 Before you begin, make sure you have the following installed:
 
@@ -86,7 +86,7 @@ npm run format
 npm run lint
 ```
 
-## 🧰 Technologies Used
+## :wrench: Technologies Used
 
 - Node.js
 - Sass
@@ -95,11 +95,11 @@ npm run lint
 - Live Server
 - Netlify
 
-## 📄 License
+## :page_facing_up: License
 
 This project is open for educational use as part of Noroff's Semester Project 2. Please contact me before reusing the code for anything outside of that.
 
-## 📬 Contact
+## :mailbox_with_mail: Contact
 
 - [My GitHub Profile](https://github.com/VildeAvloes)
 - [My LinkedIn Page](https://www.linkedin.com/in/vilde-avloes/).
