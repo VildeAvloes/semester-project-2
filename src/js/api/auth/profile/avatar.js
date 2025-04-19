@@ -1,6 +1,6 @@
-import { save } from '../../../storage/index.js';
 import { API_BASE, API_PROFILES } from '../../constants.js';
 import { authFetch } from '../../fetch.js';
+import { saveProfile } from '../state.js';
 
 export async function updateAvatar(avatarUrl, token, username) {
   const response = await authFetch(`${API_BASE}${API_PROFILES}${username}/`, {
@@ -21,10 +21,8 @@ export async function updateAvatar(avatarUrl, token, username) {
 
   if (!getResponse.ok) throw new Error(getResponse.statusText);
 
-  const fullProfile = await getResponse.json();
-  console.log('🚀 Skal lagre i localStorage:', fullProfile);
-  save('profile', fullProfile);
-  console.log('🔐 Lagret profil i localStorage:', fullProfile);
+  const userProfile = await getResponse.json();
+  saveProfile(userProfile);
 
-  return fullProfile;
+  return userProfile;
 }

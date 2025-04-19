@@ -7,4 +7,6 @@ export const loadProfile = () => {
   return profile?.data ?? profile;
 };
 
-export const saveProfile = (profile) => save('profile', profile);
+export function saveProfile(profile) {
+  save('profile', profile);
+}

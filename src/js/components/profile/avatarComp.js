@@ -54,7 +54,6 @@ export function renderUpdateAvatar() {
       if (profileAvatar && updatedUser.avatar?.url) {
         profileAvatar.src = updatedUser.avatar.url;
       }
-      console.log('updatedUser', updatedUser);
       messageContainer.innerHTML = '';
       const successMessage = renderMessage(
         'success',
