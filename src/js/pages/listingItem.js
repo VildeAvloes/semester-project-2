@@ -27,6 +27,7 @@ export async function listingItemPage(id) {
     imageWrapper.append(image);
 
     const title = document.createElement('h2');
+    title.classList.add('text-primary');
     title.textContent = data.title;
 
     const description = document.createElement('p');
