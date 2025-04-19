@@ -1,7 +1,7 @@
 export function renderProfileDetails(profile) {
   const avatar = document.createElement('img');
   avatar.id = 'profile-avatar';
-  avatar.src = profile.avatar?.url || '../../../../public/assets/avatar.png';
+  avatar.src = profile.avatar?.url;
   avatar.alt = 'Avatar';
   avatar.classList.add('rounded-circle', 'me-4');
   avatar.width = 100;

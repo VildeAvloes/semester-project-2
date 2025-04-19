@@ -22,9 +22,9 @@ export function createListingPage() {
 
   const altTextObject = renderInput({
     id: 'altText',
-    label: 'Alt Text for Image (Optional)',
+    label: 'Alt Text for Image',
     type: 'text',
-    placeholder: 'Describe the image for accessibility (optional)',
+    placeholder: 'Describe the image for accessibility',
   });
 
   const descriptionObject = renderInput({

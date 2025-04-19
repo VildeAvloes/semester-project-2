@@ -3,7 +3,7 @@ export function renderSearchBar(onSearch) {
   form.classList.add('mb-4', 'd-flex', 'justify-content-center');
 
   const inputGroup = document.createElement('div');
-  inputGroup.classList.add('input-group', 'w-50');
+  inputGroup.classList.add('input-group', 'w-75');
 
   const input = document.createElement('input');
   input.classList.add('form-control');
