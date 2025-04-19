@@ -1,5 +1,6 @@
 import { loadProfile, saveProfile } from '../../../api/auth/index.js';
 import { placeBid } from '../../../api/auth/listings/index.js';
+import { load } from '../../../storage/load.js';
 import { renderMessage } from '../../common/message.js';
 
 export function renderFooter(onClose, isOwner, listing, bidInput, bidList) {
@@ -26,7 +27,7 @@ export function renderFooter(onClose, isOwner, listing, bidInput, bidList) {
     submitButton.addEventListener('click', async () => {
       const amount = Number(bidInput.value.trim());
       const profile = loadProfile();
-      const token = localStorage.getItem('token');
+      const token = load('token');
       const highestBid = listing.bids?.[0]?.amount || 0;
 
       if (!amount || amount <= highestBid) {

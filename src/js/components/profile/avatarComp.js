@@ -48,12 +48,13 @@ export function renderUpdateAvatar() {
     }
 
     try {
-      await updateAvatar(avatarUrl, token, user.name);
-      localStorage.setItem(`profileAvatar_${user.name}`, avatarUrl);
+      const updatedUser = await updateAvatar(avatarUrl, token, user.name);
 
       const profileAvatar = document.getElementById('profile-avatar');
-      if (profileAvatar) profileAvatar.src = avatarUrl;
-
+      if (profileAvatar && updatedUser.avatar?.url) {
+        profileAvatar.src = updatedUser.avatar.url;
+      }
+      console.log('updatedUser', updatedUser);
       messageContainer.innerHTML = '';
       const successMessage = renderMessage(
         'success',
@@ -63,7 +64,8 @@ export function renderUpdateAvatar() {
 
       setTimeout(() => {
         successMessage.remove();
-      }, 2000);
+        location.reload();
+      }, 1500);
     } catch (error) {
       messageContainer.innerHTML = '';
       messageContainer.append(

@@ -3,6 +3,7 @@ import { authFetch } from '../../fetch.js';
 import { loadProfile } from '../index.js';
 
 export async function getMyListings() {
+  console.log('🧠 Henter fra localStorage:', loadProfile());
   const profile = loadProfile();
   const name = profile?.name;
 
@@ -13,6 +14,7 @@ export async function getMyListings() {
   );
 
   if (!response.ok) {
+    console.log('not okey my listing', !response.ok);
     throw new Error('Failed to fetch user listings');
   }
 

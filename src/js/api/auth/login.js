@@ -15,6 +15,8 @@ export async function login(email, password) {
     save('token', accessToken);
 
     const existingProfile = loadProfile();
+    console.log('existingProfile login', existingProfile);
+    console.log('loadProfile() login', loadProfile());
     if (existingProfile) {
       profile.credits = existingProfile.credits;
     }
