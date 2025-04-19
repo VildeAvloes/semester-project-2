@@ -20,23 +20,25 @@ The project adheres to the technical constraints approved by the company's CTO a
 8. A registered user may bid on another user's listing
 9. An unregistered user may search listings
 
+<br><br>
+
 ## :copyright: Credits
 
 Medias used in the project is downloaded from [Pixabay](https://pixabay.com/) and are royalty-free.
 
----
+<br><br>
 
 ## :globe_with_meridians: API
 
 This project uses the [Noroff API V2](https://docs.noroff.dev/docs/v2) for all user and auction-related functionality.
 
----
+<br><br>
 
 ## :rocket: Live Version
 
 [Bid Society](https://bid-society.netlify.app/)
 
----
+<br><br>
 
 ## :computer: Testing
 
@@ -49,13 +51,13 @@ If you want to test site you can visit the live version. You have to register a 
 When you have registered a user you're free to visit and use all features on the app.
 If you would like to update your avatar or create a listing, please note that your media must be an an open sourced URL. I would recommend using [Picsum](https://picsum.photos/) for testing.
 
----
+<br><br>
 
 ## :handshake: Contribution
 
 If you'd like to contribute, feel free to fork the repo and follow the steps under _Getting Started_.
 
----
+<br><br>
 
 ## :construction_worker: Getting Started
 
@@ -111,7 +113,7 @@ npm run format
 npm run lint
 ```
 
----
+<br><br>
 
 ## :wrench: Technologies Used
 
@@ -122,13 +124,13 @@ npm run lint
 - Live Server
 - Netlify
 
----
+<br><br>
 
 ## :page_facing_up: License
 
 This project is open for educational use as part of Noroff's Semester Project 2. Please contact me before reusing the code for anything outside of that.
 
----
+<br><br>
 
 ## :envelope: Contact
 
