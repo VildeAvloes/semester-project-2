@@ -23,17 +23,12 @@ export function renderFooter(onClose, isOwner, listing, bidInput, bidList) {
   const now = new Date();
   const hasExpired = now > deadline;
 
-  const messageWrapper = document.createElement('div');
-  messageWrapper.classList.add('w-100', 'mt-2');
-  bidList.parentElement.append(messageWrapper);
-
   if (hasExpired) {
-    messageWrapper.innerHTML = '';
     const expiredMessage = renderMessage(
       'info',
       'This auction has ended. No further bids can be placed.'
     );
-    messageWrapper.append(expiredMessage);
+    bidList.parentElement.append(expiredMessage);
 
     if (bidInput && bidInput.parentElement) {
       bidInput.parentElement.removeChild(bidInput);
@@ -46,8 +41,6 @@ export function renderFooter(onClose, isOwner, listing, bidInput, bidList) {
     submitButton.textContent = 'Submit Bid';
 
     submitButton.addEventListener('click', async () => {
-      messageWrapper.innerHTML = '';
-
       const amount = Number(bidInput.value.trim());
       const profile = loadProfile();
       const token = load('token');
@@ -58,13 +51,13 @@ export function renderFooter(onClose, isOwner, listing, bidInput, bidList) {
           'error',
           `Bid must be more than ${highestBid} credits`
         );
-        messageWrapper.append(error);
+        bidList.parentElement.append(error);
         return;
       }
 
       if (amount > profile.credits) {
         const error = renderMessage('error', 'Not enough credits');
-        messageWrapper.append(error);
+        bidList.parentElement.append(error);
         return;
       }
 
@@ -88,11 +81,11 @@ export function renderFooter(onClose, isOwner, listing, bidInput, bidList) {
         bidInput.value = '';
 
         const success = renderMessage('success', 'Bid placed!');
-        messageWrapper.append(success);
+        bidList.parentElement.append(success);
       } catch (err) {
         const error = renderMessage('error', 'Something went wrong');
         console.error('Something went wrong', err);
-        messageWrapper.append(error);
+        bidList.parentElement.append(error);
       }
     });
 

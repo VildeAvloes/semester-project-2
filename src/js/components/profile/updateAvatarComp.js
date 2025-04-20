@@ -24,10 +24,7 @@ export function renderUpdateAvatar() {
   input.classList.add('flex-grow-1');
 
   const avatarInput = input.querySelector('input');
-
-  const messageWrapper = document.createElement('div');
-  messageWrapper.classList.add('w-100', 'mt-2');
-  form.append(messageWrapper);
+  const messageContainer = input.querySelector(`#avatarUrl-message`);
 
   const updateButton = document.createElement('button');
   updateButton.type = 'submit';
@@ -35,17 +32,16 @@ export function renderUpdateAvatar() {
   updateButton.textContent = 'Update Avatar';
 
   inputRow.append(input, updateButton);
-  form.append(inputRow);
+  form.append(inputRow, messageContainer);
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const avatarUrl = avatarInput.value.trim();
 
-    messageWrapper.innerHTML = '';
-
     if (!avatarUrl) {
-      messageWrapper.append(
+      messageContainer.innerHTML = '';
+      messageContainer.append(
         renderMessage('error', 'Please provide a valid Avatar URL')
       );
       return;
@@ -58,18 +54,20 @@ export function renderUpdateAvatar() {
       if (profileAvatar && updatedUser.avatar?.url) {
         profileAvatar.src = updatedUser.avatar.url;
       }
-
-      messageWrapper.append(
-        renderMessage('success', 'Avatar was successfully updated!')
+      messageContainer.innerHTML = '';
+      const successMessage = renderMessage(
+        'success',
+        'Avatar was successfully updated!'
       );
+      messageContainer.append(successMessage);
 
       setTimeout(() => {
-        messageWrapper.innerHTML = '';
+        successMessage.remove();
         location.reload();
       }, 1500);
     } catch (error) {
-      messageWrapper.innerHTML = '';
-      messageWrapper.append(
+      messageContainer.innerHTML = '';
+      messageContainer.append(
         renderMessage('error', 'Could not update avatar. Please try again.')
       );
       console.error('Failed to update avatar:', error);
