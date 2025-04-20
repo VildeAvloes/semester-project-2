@@ -23,7 +23,6 @@ export function renderFooter(onClose, isOwner, listing, bidInput, bidList) {
   const now = new Date();
   const hasExpired = now > deadline;
 
-  // Meldingen for at auksjonen er avsluttet
   if (hasExpired) {
     const expiredMessage = renderMessage(
       'info',
@@ -36,7 +35,6 @@ export function renderFooter(onClose, isOwner, listing, bidInput, bidList) {
     }
   }
 
-  // Håndtere bud-innsending dersom brukeren ikke er eier og auksjonen ikke er avsluttet
   if (!isOwner && bidInput && bidList && !hasExpired) {
     const submitButton = document.createElement('button');
     submitButton.classList.add('btn', 'btn-primary', 'min-w-150');
