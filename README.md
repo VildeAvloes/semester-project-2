@@ -119,6 +119,7 @@ npm run lint
 ## :wrench: Technologies Used
 
 - Node.js
+- Bootstrap
 - Sass
 - Prettier
 - Eslint
