@@ -52,14 +52,21 @@ export function renderFooter(onClose, isOwner, listing, bidInput, bidList) {
           'error',
           `Bid must be more than ${highestBid} credits`
         );
-
         bidList.parentElement.append(error);
+
+        setTimeout(() => {
+          error.remove();
+        }, 4000);
         return;
       }
 
       if (amount > profile.credits) {
         const error = renderMessage('error', 'Not enough credits');
         bidList.parentElement.append(error);
+
+        setTimeout(() => {
+          error.remove();
+        }, 3000);
         return;
       }
 
@@ -84,10 +91,16 @@ export function renderFooter(onClose, isOwner, listing, bidInput, bidList) {
 
         const success = renderMessage('success', 'Bid placed!');
         bidList.parentElement.append(success);
+        setTimeout(() => {
+          success.remove();
+        }, 3000);
       } catch (err) {
         const error = renderMessage('error', 'Something went wrong');
         console.error('Something went wrong', err);
         bidList.parentElement.append(error);
+        setTimeout(() => {
+          error.remove();
+        }, 3000);
       }
     });
 
