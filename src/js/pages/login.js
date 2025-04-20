@@ -30,11 +30,14 @@ export function loginPage() {
 
   form.append(email, password, buttonGroup);
 
+  const messageWrapper = document.createElement('div');
+  messageWrapper.classList.add('w-100', 'mt-2');
+  form.append(messageWrapper);
+
   form.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    const previousMessage = form.querySelector('.message-container');
-    if (previousMessage) previousMessage.remove();
+    messageWrapper.innerHTML = '';
 
     const isValid = validateLoginForm([
       { group: email, field: 'email' },
@@ -47,10 +50,15 @@ export function loginPage() {
           'error',
           'Invalid email or password'
         );
-        errorMessage.classList.add('d-flex', 'justify-content-center');
-        form.prepend(errorMessage);
-        throw new Error('Invalid email or password', error);
+        messageWrapper.append(errorMessage);
+        console.error('Invalid email or password', error);
       });
+    } else {
+      const errorMessage = renderMessage(
+        'error',
+        'Please fill out all fields correctly'
+      );
+      messageWrapper.append(errorMessage);
     }
   });
 

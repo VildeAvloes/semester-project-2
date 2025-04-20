@@ -30,6 +30,10 @@ export async function renderMyListings() {
   listingsHeader.append(listingsTitle, createListingButton);
   myListings.append(listingsHeader);
 
+  const messageWrapper = document.createElement('div');
+  messageWrapper.classList.add('mb-3');
+  myListings.append(messageWrapper);
+
   const listingCards = document.createElement('div');
   listingCards.id = 'listing-cards';
   listingCards.classList.add(
@@ -57,10 +61,14 @@ export async function renderMyListings() {
   try {
     myListingsData = await getMyListings();
 
+    messageWrapper.innerHTML = '';
+
     if (!myListingsData.length) {
-      listingCards.append(
-        renderMessage('info', 'You have not created any listings yet.')
+      const message = renderMessage(
+        'info',
+        'You have not created any listings yet.'
       );
+      messageWrapper.append(message);
       loadMoreButton.classList.add('d-none');
     } else {
       currentIndex = renderNextItems(
@@ -75,9 +83,12 @@ export async function renderMyListings() {
       }
     }
   } catch (error) {
-    listingCards.append(
-      renderMessage('error', 'Failed to load your listings.')
+    messageWrapper.innerHTML = '';
+    const errorMessage = renderMessage(
+      'error',
+      'Failed to load your listings.'
     );
+    messageWrapper.append(errorMessage);
     console.error('Error loading my listings:', error);
   }
 
