@@ -1,6 +1,5 @@
-import { API_BASE, API_PROFILES } from '../../constants.js';
-import { authFetch } from '../../fetch.js';
-import { saveProfile } from '../state.js';
+import { API_BASE, API_PROFILES, authFetch } from '../../index.js';
+import { saveProfile } from '../index.js';
 
 export async function updateAvatar(avatarUrl, token, username) {
   const response = await authFetch(`${API_BASE}${API_PROFILES}${username}/`, {

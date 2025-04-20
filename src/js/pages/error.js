@@ -1,6 +1,8 @@
 import { renderWrapper, renderMessage } from '../components/common/index.js';
 
 export function errorPage() {
+  document.title = 'Bid Society | Error';
+
   const { container, col } = renderWrapper('Oops! Something went wrong');
 
   const wrapper = document.createElement('div');

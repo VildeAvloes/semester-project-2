@@ -7,6 +7,8 @@ import {
 } from '../components/profile/index.js';
 
 export async function profilePage() {
+  document.title = 'Bid Society | My Profile';
+
   if (!isLoggedIn()) {
     location.hash = '#login';
     return;

@@ -19,7 +19,23 @@ export function renderFooter(onClose, isOwner, listing, bidInput, bidList) {
   cancelButton.addEventListener('click', onClose);
   footer.append(cancelButton);
 
-  if (!isOwner && bidInput && bidList) {
+  const deadline = new Date(listing.endsAt);
+  const now = new Date();
+  const hasExpired = now > deadline;
+
+  if (hasExpired) {
+    const expiredMessage = renderMessage(
+      'info',
+      'This auction has ended. No further bids can be placed.'
+    );
+    bidList.parentElement.append(expiredMessage);
+
+    if (bidInput && bidInput.parentElement) {
+      bidInput.parentElement.removeChild(bidInput);
+    }
+  }
+
+  if (!isOwner && bidInput && bidList && !hasExpired) {
     const submitButton = document.createElement('button');
     submitButton.classList.add('btn', 'btn-primary', 'min-w-150');
     submitButton.textContent = 'Submit Bid';

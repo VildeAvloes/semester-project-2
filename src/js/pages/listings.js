@@ -8,6 +8,8 @@ import {
 import { renderNextItems } from '../utils/listings/nextItems.js';
 
 export async function listingsPage() {
+  document.title = 'Bid Society | Listings';
+
   const { container, row, col } = renderWrapper('Listings', 'col-md-10');
 
   const descriptionContainer = renderDescription();

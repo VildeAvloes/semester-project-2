@@ -1,6 +1,5 @@
-import { register } from '../../api/auth/register.js';
-import { login } from '../../api/auth/login.js';
-import { saveProfile } from '../../api/auth/state.js';
+import { register, login } from '../../api/auth/index.js';
+import { saveProfile } from '../../api/auth/index.js';
 
 export async function onAuth(event) {
   event.preventDefault();

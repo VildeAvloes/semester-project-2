@@ -9,6 +9,8 @@ import { onAuth } from '../utils/events/onAuth.js';
 import { validateRegisterForm } from '../utils/forms/index.js';
 
 export function registerPage() {
+  document.title = 'Bid Society | Register';
+
   if (isLoggedIn()) {
     location.hash = '#profile';
     return;
@@ -42,8 +44,8 @@ export function registerPage() {
 
   form.append(name, email, password, buttons);
 
-  form.addEventListener('submit', (event) => {
-    event.preventDefault();
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
 
     const isValid = validateRegisterForm([
       { group: name, field: 'name' },

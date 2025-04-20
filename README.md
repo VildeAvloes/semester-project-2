@@ -6,7 +6,7 @@
 
 ## :books: Description
 
-This is my delivery for **Semester Project 2** at Noroff. The task was to apply the skills acquired over the past semesters to build an **auction website** using the [Noroff API V2](https://docs.noroff.dev/docs/v2).
+This is my delivery for **Semester Project 2** at Noroff. The task was to apply the skills acquired over the past semesters to build an **auction website** using the provided API.
 
 The project adheres to the technical constraints approved by the company's CTO and implements the following user stories:
 
@@ -64,7 +64,8 @@ If you'd like to contribute, feel free to fork the repo and follow the steps und
 Before you begin, make sure you have the following installed:
 
 - [Node.js](https://nodejs.org/)
-- A terminal (e.g. Terminal, iTerm2, Git Bash, etc.)
+- A terminal
+- Your preferred code editor
 
 ### Clone the Repository
 
@@ -135,4 +136,4 @@ This project is open for educational use as part of Noroff's Semester Project 2.
 ## :envelope: Contact
 
 - [My GitHub Profile](https://github.com/VildeAvloes)
-- [My LinkedIn Page](https://www.linkedin.com/in/vilde-avloes/)
+- [My LinkedIn Page](https://www.linkedin.com/in/vildeavloes/)

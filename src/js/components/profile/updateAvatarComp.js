@@ -34,8 +34,8 @@ export function renderUpdateAvatar() {
   inputRow.append(input, updateButton);
   form.append(inputRow, messageContainer);
 
-  form.addEventListener('submit', async (event) => {
-    event.preventDefault();
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
 
     const avatarUrl = avatarInput.value.trim();
 

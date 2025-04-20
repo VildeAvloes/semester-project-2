@@ -1,6 +1,8 @@
 import { renderHowItWorks } from '../components/homePage/howItWorks.js';
 
 export function homePage() {
+  document.title = 'Bid Society | Home';
+
   const container = document.createElement('div');
   container.classList.add('container', 'py-5');
 

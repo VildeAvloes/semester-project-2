@@ -1,5 +1,5 @@
 import { updateNavbar } from '../../index.js';
-import { remove } from '../../storage/remove.js';
+import { remove } from '../../storage/index.js';
 
 export function logout() {
   remove('profile');

@@ -8,6 +8,8 @@ import { onAuth } from '../utils/events/onAuth.js';
 import { validateLoginForm } from '../utils/forms/index.js';
 
 export function loginPage() {
+  document.title = 'Bid Society | Log In';
+
   const { container, col } = renderWrapper('Log In', 'col-md-6');
   const form = renderForm();
 
@@ -28,8 +30,8 @@ export function loginPage() {
 
   form.append(email, password, buttonGroup);
 
-  form.addEventListener('submit', (event) => {
-    event.preventDefault();
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
 
     const previousMessage = form.querySelector('.message-container');
     if (previousMessage) previousMessage.remove();

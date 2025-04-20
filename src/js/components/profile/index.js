@@ -1,3 +1,3 @@
 export * from './profileDetails.js';
-export * from './avatarComp.js';
+export * from './updateAvatarComp.js';
 export * from './myListings.js';

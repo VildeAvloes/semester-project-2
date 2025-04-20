@@ -18,9 +18,14 @@ export async function listingItemPage(id) {
   try {
     const listing = await getListing(id);
     const data = listing.data;
+    document.title = `Bid Society | ${data.title}`;
+
     const currentUser = loadProfile();
     const currentSeller = data.seller;
     const isOwner = currentSeller?.name === currentUser?.name;
+
+    const now = new Date();
+    const hasExpired = new Date(data.endsAt) < now;
 
     const imageWrapper = document.createElement('div');
     const image = renderListingItemImage(data.media);
@@ -37,10 +42,20 @@ export async function listingItemPage(id) {
     deadline.classList.add('text-muted');
     deadline.textContent = `Deadline: ${new Date(data.endsAt).toLocaleString()}`;
 
+    if (hasExpired) {
+      deadline.classList.remove('text-muted');
+      deadline.classList.add('text-danger');
+    }
+
     const bidButton = document.createElement('button');
     bidButton.setAttribute('type', 'button');
     bidButton.classList.add('btn', 'btn-primary', 'min-w-150');
-    bidButton.textContent = isOwner ? 'View current bids' : 'Make a bid';
+    bidButton.textContent = isOwner
+      ? 'View current bids'
+      : hasExpired
+        ? 'View bids'
+        : 'Make a bid';
+
     bidButton.addEventListener('click', () => {
       openModal(data, isOwner);
     });

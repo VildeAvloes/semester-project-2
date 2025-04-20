@@ -3,6 +3,8 @@ import { renderMessage, renderWrapper } from '../components/common/index.js';
 import { renderForm, renderInput } from '../components/forms/index.js';
 
 export function createListingPage() {
+  document.title = 'Bid Society | Create Listing';
+
   const { container, col } = renderWrapper('Create Listing', 'col-md-8');
   const form = renderForm();
 
@@ -67,8 +69,8 @@ export function createListingPage() {
     buttonWrapper
   );
 
-  form.addEventListener('submit', async (event) => {
-    event.preventDefault();
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
 
     form.querySelector('.message-container')?.remove();
 

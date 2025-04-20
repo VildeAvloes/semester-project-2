@@ -1,9 +1,9 @@
 export function load(key) {
-  const raw = localStorage.getItem(key);
+  const loadedKey = localStorage.getItem(key);
 
-  if (!raw || raw === 'undefined') {
+  if (!loadedKey || loadedKey === 'undefined') {
     return null;
   }
 
-  return JSON.parse(raw);
+  return JSON.parse(loadedKey);
 }

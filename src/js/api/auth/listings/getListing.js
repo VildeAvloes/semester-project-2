@@ -1,5 +1,4 @@
-import { API_BASE, API_LISTINGS } from '../../constants.js';
-import { authFetch } from '../../fetch.js';
+import { API_BASE, API_LISTINGS, authFetch } from '../../index.js';
 
 export async function getListing(id) {
   const response = await authFetch(
