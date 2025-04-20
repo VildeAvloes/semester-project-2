@@ -23,6 +23,7 @@ export function renderFooter(onClose, isOwner, listing, bidInput, bidList) {
   const now = new Date();
   const hasExpired = now > deadline;
 
+  // Meldingen for at auksjonen er avsluttet
   if (hasExpired) {
     const expiredMessage = renderMessage(
       'info',
@@ -35,6 +36,7 @@ export function renderFooter(onClose, isOwner, listing, bidInput, bidList) {
     }
   }
 
+  // Håndtere bud-innsending dersom brukeren ikke er eier og auksjonen ikke er avsluttet
   if (!isOwner && bidInput && bidList && !hasExpired) {
     const submitButton = document.createElement('button');
     submitButton.classList.add('btn', 'btn-primary', 'min-w-150');
@@ -44,13 +46,15 @@ export function renderFooter(onClose, isOwner, listing, bidInput, bidList) {
       const amount = Number(bidInput.value.trim());
       const profile = loadProfile();
       const token = load('token');
-      const highestBid = listing.bids?.[0]?.amount || 0;
+      const sortedBids = listing.bids?.sort((a, b) => b.amount - a.amount);
+      const highestBid = sortedBids?.[0]?.amount || 0;
 
       if (!amount || amount <= highestBid) {
         const error = renderMessage(
           'error',
           `Bid must be more than ${highestBid} credits`
         );
+
         bidList.parentElement.append(error);
         return;
       }
